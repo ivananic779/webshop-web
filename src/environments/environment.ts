@@ -5,7 +5,7 @@
 export const environment = {
   production: false,
   name: "WIH",
-  apiUrl: 'https://localhost:4202/api/',
+  apiUrl: 'http://localhost:4202/api',
 };
 
 /*

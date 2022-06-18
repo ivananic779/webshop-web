@@ -1,1 +1,109 @@
-<p>user-management works!</p>
+<div class="header bg-gradient-info pt-6">
+    <div class="container-fluid">
+        <div class="header-body">
+        </div>
+    </div>
+</div>
+<div class="container-fluid mt-3">
+    <div class="row">
+        <p-table #dt [value]="users" dataKey="id"
+            styleClass="p-datatable-customers" [rowHover]="true" [rows]="10" [showCurrentPageReport]="true"
+            [rowsPerPageOptions]="[10,25,50]" [loading]="loading" responsiveLayout="scroll" [paginator]="true"
+            currentPageReportTemplate="Showing {first} to {last} of {totalRecords} entries" [filterDelay]="0"
+            [globalFilterFields]="['id','username','first_name','last_name', 'company_name', 'email']">
+            <ng-template pTemplate="caption">
+                <div class="table-header">
+                    List of Customers
+                    <span class="p-input-icon-left">
+                        <i class="pi pi-search"></i>
+                        <input pInputText type="text" (input)="dt.filterGlobal($event.target.value, 'contains')"
+                            placeholder="Global Search" />
+                    </span>
+                </div>
+            </ng-template>
+            <ng-template pTemplate="header">
+                <tr>
+                    <th pSortableColumn="id">
+                        <div class="flex justify-content-between align-items-center">
+                            ID
+                            <p-sortIcon field="id"></p-sortIcon>
+                            <p-columnFilter type="text" field="id" display="menu" class="ml-auto"></p-columnFilter>
+                        </div>
+                    </th>
+                    <th pSortableColumn="username">
+                        <div class="flex justify-content-between align-items-center">
+                            Username
+                            <p-sortIcon field="username"></p-sortIcon>
+                            <p-columnFilter type="text" field="username" display="menu" class="ml-auto"></p-columnFilter>
+                        </div>
+                    </th>
+                    <th pSortableColumn="first_name">
+                        <div class="flex justify-content-between align-items-center">
+                            First Name
+                            <p-sortIcon field="first_name"></p-sortIcon>
+                            <p-columnFilter type="text" field="first_name" display="menu" class="ml-auto"></p-columnFilter>
+                        </div>
+                    </th>
+                    <th pSortableColumn="last_name">
+                        <div class="flex justify-content-between align-items-center">
+                            Last Name
+                            <p-sortIcon field="last_name"></p-sortIcon>
+                            <p-columnFilter type="text" field="last_name" display="menu" class="ml-auto"></p-columnFilter>
+                        </div>
+                    </th>
+                    <th pSortableColumn="company_name">
+                        <div class="flex justify-content-between align-items-center">
+                            Company Name
+                            <p-sortIcon field="company_name"></p-sortIcon>
+                            <p-columnFilter type="text" field="company_name" display="menu" class="ml-auto"></p-columnFilter>
+                        </div>
+                    </th>
+                    <th pSortableColumn="email">
+                        <div class="flex justify-content-between align-items-center">
+                            E-mail
+                            <p-sortIcon field="email"></p-sortIcon>
+                            <p-columnFilter type="text" field="email" display="menu" class="ml-auto"></p-columnFilter>
+                        </div>
+                    </th>
+                    <th style="width: 8rem"></th>
+                </tr>
+            </ng-template>
+            <ng-template pTemplate="body" let-user>
+                <tr>
+                    <td>
+                        <span class="p-column-title">ID</span>
+                        {{user.id}}
+                    </td>
+                    <td>
+                        <span class="p-column-title">Username</span>
+                        {{user.username}}
+                    </td>
+                    <td>
+                        <span class="p-column-title">First Name</span>
+                        {{user.first_name}}
+                    </td>
+                    <td>
+                        <span class="p-column-title">Last Name</span>
+                        {{user.last_name}}
+                    </td>
+                    <td>
+                        <span class="p-column-title">Company Name</span>                        
+                        {{user.company_name}}
+                    </td>
+                    <td>
+                        <span class="p-column-title">E-mail</span>
+                        {{user.email}}
+                    </td>
+                    <td style="text-align: center">
+                        <button pButton type="button" class="p-button-secondary" icon="pi pi-cog"></button>
+                    </td>
+                </tr>
+            </ng-template>
+            <ng-template pTemplate="emptymessage">
+                <tr>
+                    <td colspan="8">No users found.</td>
+                </tr>
+            </ng-template>
+        </p-table>
+    </div>
+</div>

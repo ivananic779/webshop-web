@@ -10,3 +10,7 @@ export interface User {
     last_name: string;
     email: string;
 }
+
+export interface Users {
+    users: User[];
+}

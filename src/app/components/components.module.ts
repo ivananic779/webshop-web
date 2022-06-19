@@ -8,6 +8,8 @@ import { NgbModule } from '@ng-bootstrap/ng-bootstrap';
 import { UiComponent } from './ui/ui.component';
 
 import { BlockUIModule } from 'primeng/blockui';
+import { ToastModule } from 'primeng/toast';
+import { MessageService } from 'primeng/api';
 
 @NgModule({
   imports: [
@@ -15,6 +17,7 @@ import { BlockUIModule } from 'primeng/blockui';
     RouterModule,
     NgbModule,
     BlockUIModule,
+    ToastModule,
   ],
   declarations: [
     FooterComponent,
@@ -27,6 +30,7 @@ import { BlockUIModule } from 'primeng/blockui';
     NavbarComponent,
     SidebarComponent,
     UiComponent,
-  ]
+  ],
+  providers: [MessageService]
 })
 export class ComponentsModule { }

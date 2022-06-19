@@ -41,13 +41,14 @@ export class UserFormComponent implements OnInit {
 
   @Output() closeDialogEmitter = new EventEmitter<boolean>();
 
-  user: User;
+  @Input() user: User;
 
   constructor(
     private formBuilder: FormBuilder,
     private apiService: ApiService,
     private uiService: UiService,
   ) {
+    this.display = false;
     this.user = new User();
   }
 

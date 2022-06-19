@@ -13,14 +13,14 @@
                 <div class="col-12 md:col-6">
                     <div class="p-inputgroup">
                         <span class="p-inputgroup-addon"><i class="pi pi-user"></i></span>
-                        <input id="username" type="text" pInputText placeholder="{{ 'username' }}" formControlName="username">
+                        <input id="username" type="text" pInputText placeholder="{{ 'username' }}" [(ngModel)]="user.username" formControlName="username">
                     </div>
                 </div>
                 
                 <div class="col-12 md:col-6">
                     <div class="p-inputgroup">
                         <span class="p-inputgroup-addon"><i class="pi pi-send"></i></span>
-                        <input id="email" type="text" pInputText placeholder="{{ 'email' }}" formControlName="email">
+                        <input id="email" type="text" pInputText placeholder="{{ 'email' }}" [(ngModel)]="user.email" formControlName="email">
                     </div>
                 </div>
             </div>
@@ -28,14 +28,14 @@
                 <div class="col-12 md:col-6">
                     <div class="p-inputgroup">
                         <span class="p-inputgroup-addon"><i class="pi pi-key"></i></span>
-                        <input id="password" type="text" pInputText placeholder="{{ 'password' }}" formControlName="password">
+                        <input id="password" type="text" pInputText placeholder="{{ 'password' }}" [(ngModel)]="user.password" formControlName="password">
                     </div>
                 </div>
                 
                 <div class="col-12 md:col-6">
                     <div class="p-inputgroup">
                         <span class="p-inputgroup-addon"><i class="pi pi-key"></i></span>
-                        <input id="confirm_password" type="text" pInputText placeholder="{{ 'confirm_password' }}" formControlName="confirm_password">
+                        <input id="confirm_password" type="text" pInputText placeholder="{{ 'confirm_password' }}" [(ngModel)]="user.confirm_password" formControlName="confirm_password">
                     </div>
                 </div>
             </div>
@@ -43,14 +43,14 @@
                 <div class="col-12 md:col-6">
                     <div class="p-inputgroup">
                         <span class="p-inputgroup-addon"><i class="pi pi-id-card"></i></span>
-                        <input id="first_name" type="text" pInputText placeholder="{{ 'first_name' }}" formControlName="first_name">
+                        <input id="first_name" type="text" pInputText placeholder="{{ 'first_name' }}" [(ngModel)]="user.first_name" formControlName="first_name">
                     </div>
                 </div>
                 
                 <div class="col-12 md:col-6">
                     <div class="p-inputgroup">
                         <span class="p-inputgroup-addon"><i class="pi pi-id-card"></i></span>
-                        <input id="last_name" type="text" pInputText placeholder="{{ 'last_name' }}" formControlName="last_name">
+                        <input id="last_name" type="text" pInputText placeholder="{{ 'last_name' }}" [(ngModel)]="user.last_name" formControlName="last_name">
                     </div>
                 </div>
             </div>
@@ -58,14 +58,14 @@
                 <div class="col-12 md:col-6">
                     <div class="p-inputgroup">
                         <span class="p-inputgroup-addon"><i class="pi pi-building"></i></span>
-                        <input id="company_name" type="text" pInputText placeholder="{{ 'company_name' }}" formControlName="company_name">
+                        <input id="company_name" type="text" pInputText placeholder="{{ 'company_name' }}" [(ngModel)]="user.company_name" formControlName="company_name">
                     </div>
                 </div>
                 
                 <div class="col-12 md:col-6">
                     <div class="p-inputgroup">
                         <span class="p-inputgroup-addon"><i class="pi pi-flag"></i></span>
-                        <input id="language_id" type="text" pInputText placeholder="{{ 'language' }}" formControlName="language_id">
+                        <input id="language_id" type="text" pInputText placeholder="{{ 'language' }}" [(ngModel)]="user.language_id" formControlName="language_id">
                     </div>
                 </div>
             </div>

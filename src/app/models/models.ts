@@ -1,3 +1,5 @@
+import { SelectItem } from "primeng/api";
+
 export interface APIResponse<T> {
     status: string;
     message: string;
@@ -32,4 +34,32 @@ export class User {
     role_id?: number;
     email: string;
     language_id: number;
+}
+
+export interface Language {
+    id: number;
+    name: string;
+}
+
+export interface Languages {
+    languages: Language[];
+}
+
+export class Language {
+    id: number;
+    name: string;
+    country?: string;
+
+    public static makeSelectItem(languages: Language[]): SelectItem[] {
+        const result: SelectItem[] = [];
+
+        languages.forEach(language => {
+               result.push({
+                    label: language.name,
+                    value: language.id,
+                });            
+        });
+
+        return result;
+    }
 }

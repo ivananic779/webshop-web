@@ -20,6 +20,7 @@ import { DialogModule } from 'primeng/dialog';
 import { ReactiveFormsModule } from '@angular/forms';
 
 import { UserFormComponent } from 'src/app/pages/user-management/user-form/user-form.component';
+import { DropdownModule } from 'primeng/dropdown';
 
 @NgModule({
   imports: [
@@ -34,6 +35,7 @@ import { UserFormComponent } from 'src/app/pages/user-management/user-form/user-
     InputTextModule,
     DialogModule,
     ReactiveFormsModule,
+    DropdownModule,
   ],
   declarations: [
     DashboardComponent,

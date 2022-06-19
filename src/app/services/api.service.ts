@@ -52,4 +52,9 @@ export class ApiService {
     return this.http.post<ApiModels.APIResponse<[]>>(`${this.baseUrl}/users`, $user)
       .pipe(map(res => res));
   }
+
+  public getLanguages(): Observable<ApiModels.APIResponse<ApiModels.Language[]>> {
+    return this.http.get<ApiModels.APIResponse<ApiModels.Language[]>>(`${this.baseUrl}/languages`)
+      .pipe(map(res => res));
+  }
 }

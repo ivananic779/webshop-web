@@ -8,7 +8,7 @@
     >
     <form [formGroup]="formGroup">
         <div class="grid p-fluid">
-            <button (click)="logme(user)">klik</button>
+            <button (click)="logme(languages)">klik</button>
             <div class="row">
                 <div class="col-12 md:col-6">
                     <div class="p-inputgroup">
@@ -65,7 +65,7 @@
                 <div class="col-12 md:col-6">
                     <div class="p-inputgroup">
                         <span class="p-inputgroup-addon"><i class="pi pi-flag"></i></span>
-                        <input id="language_id" type="text" pInputText placeholder="{{ 'language' }}" [(ngModel)]="user.language_id" formControlName="language_id">
+                        <p-dropdown id="language_id" [options]="languages" [(ngModel)]="user.language_id" formControlName="language_id" placeholder="{{ 'language' }}" appendTo="body"></p-dropdown>
                     </div>
                 </div>
             </div>

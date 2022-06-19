@@ -41,7 +41,6 @@ export class UserManagementComponent implements OnInit {
           if (res.status == "OK") {
             this.users = res.data;
             this.uiService.toggleLoading();
-            this.uiService.showSuccess(res.message);
           } else {
             this.uiService.toggleLoading();
             this.uiService.showError(res.message);

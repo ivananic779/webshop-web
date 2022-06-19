@@ -70,3 +70,10 @@
         width: 100% !important;
     }
 }
+
+// https://github.com/primefaces/primeng/issues/9741
+.p-inputgroup p-dropdown {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+  }

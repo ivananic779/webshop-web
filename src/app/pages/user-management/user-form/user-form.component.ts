@@ -1,9 +1,9 @@
 import { Component, EventEmitter, Input, OnInit, Output } from '@angular/core';
 import { FormBuilder, Validators } from '@angular/forms';
 import { UiService } from 'src/app/components/ui/ui.service';
-import { User } from 'src/app/models/models';
+import { Language, User } from 'src/app/models/models';
 import { ApiService } from 'src/app/services/api.service';
-
+import { SelectItem } from 'primeng/api';
 
 @Component({
   selector: 'app-user-form',
@@ -43,6 +43,8 @@ export class UserFormComponent implements OnInit {
 
   @Input() user: User;
 
+  public languages: SelectItem[];
+
   constructor(
     private formBuilder: FormBuilder,
     private apiService: ApiService,
@@ -50,9 +52,28 @@ export class UserFormComponent implements OnInit {
   ) {
     this.display = false;
     this.user = new User();
+    this.languages = [];
   }
 
   ngOnInit(): void {
+    this.getLanguages();
+  }
+
+  private getLanguages() {
+    this.uiService.toggleLoading();
+    try {
+      this.apiService.getLanguages().subscribe(res => {
+        if (res.status == "OK") {
+          this.languages = Language.makeSelectItem(res.data);
+        } else {
+          this.uiService.toggleLoading();
+          this.uiService.showError(res.message);
+        }
+      });
+    } catch (error) {
+      this.uiService.toggleLoading();
+      this.uiService.showError(error);
+    }
   }
 
   public closeDialog(refresh: boolean): void {
@@ -63,14 +84,10 @@ export class UserFormComponent implements OnInit {
   public saveChanges(): void {
     this.uiService.toggleLoading();
 
-    // should be dropdown
-    this.user.language_id = 1;
-
     try {
       this.apiService.postUser(this.user).subscribe(res => {
         if (res.status == "OK") {
           this.uiService.toggleLoading();
-          this.uiService.showSuccess(res.message);
           this.closeDialog(true);
         } else {
           this.uiService.toggleLoading();

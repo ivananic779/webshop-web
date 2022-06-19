@@ -1,5 +1,6 @@
 import { Component, EventEmitter, Input, OnInit, Output } from '@angular/core';
 import { FormBuilder, Validators } from '@angular/forms';
+import { UiService } from 'src/app/components/ui/ui.service';
 import { User } from 'src/app/models/models';
 import { ApiService } from 'src/app/services/api.service';
 
@@ -45,6 +46,7 @@ export class UserFormComponent implements OnInit {
   constructor(
     private formBuilder: FormBuilder,
     private apiService: ApiService,
+    private uiService: UiService,
   ) {
     this.user = new User();
   }
@@ -58,6 +60,8 @@ export class UserFormComponent implements OnInit {
   }
 
   public saveChanges(): void {
+    this.uiService.toggleLoading();
+
     this.user.username = this.formGroup.get('username').value;
     this.user.email = this.formGroup.get('email').value;
     this.user.password = this.formGroup.get('password').value;
@@ -70,6 +74,8 @@ export class UserFormComponent implements OnInit {
     this.apiService.postUser(this.user).subscribe(res => {
       this.closeDialog(true);
     });
+    
+    this.uiService.toggleLoading();
   }
 
   logme(me) {

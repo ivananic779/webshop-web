@@ -1,4 +1,5 @@
 import { Component, OnInit } from '@angular/core';
+import { UiService } from 'src/app/components/ui/ui.service';
 import { Users } from 'src/app/models/models';
 import { ApiService } from 'src/app/services/api.service';
 
@@ -14,10 +15,11 @@ export class UserManagementComponent implements OnInit {
   public loading: boolean;
 
   constructor(
-    private apiService: ApiService
+    private apiService: ApiService,
+    private uiService: UiService,
   ) {
-    this.loading = true;
     this.displayUserForm = false;
+    this.loading = false;
   }
 
   ngOnInit(): void {
@@ -25,11 +27,12 @@ export class UserManagementComponent implements OnInit {
   }
 
   private getData(): void {
-    this.loading = true;
+    this.uiService.toggleLoading();
+
     this.users = null;
     this.apiService.getUsers().subscribe(res => {
       this.users = res.data;
-      this.loading = false;
+      this.uiService.toggleLoading();
     });
   }
 

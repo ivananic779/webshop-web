@@ -35,19 +35,33 @@ export class UserManagementComponent implements OnInit {
     this.uiService.toggleLoading();
 
     this.users = null;
-    this.apiService.getUsers().subscribe(res => {
-      this.users = res.data;
+
+    try {
+        this.apiService.getUsers().subscribe(res => {
+          if (res.status == "OK") {
+            this.users = res.data;
+            this.uiService.toggleLoading();
+            this.uiService.showSuccess(res.message);
+          } else {
+            this.uiService.toggleLoading();
+            this.uiService.showError(res.message);
+          }
+      });
+    } catch (error) {
+      this.users = null;
       this.uiService.toggleLoading();
-    });
+      this.uiService.showError(error);
+    }
   }
 
-  public toggleUserForm(event, selectedUser: User = null): void {
+  public toggleUserForm(isRefresh: boolean, selectedUser: User = null): void {
     if (selectedUser != null) {
       // Deep copy of the selected user
       this.selectedUser = JSON.parse(JSON.stringify(selectedUser));
     }
 
-    if (event == true) {
+    // If data needs to be refreshed
+    if (isRefresh) {
       this.getData();
     }
 

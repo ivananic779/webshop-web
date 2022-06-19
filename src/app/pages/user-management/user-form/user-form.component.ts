@@ -63,20 +63,24 @@ export class UserFormComponent implements OnInit {
   public saveChanges(): void {
     this.uiService.toggleLoading();
 
-    this.user.username = this.formGroup.get('username').value;
-    this.user.email = this.formGroup.get('email').value;
-    this.user.password = this.formGroup.get('password').value;
-    this.user.first_name = this.formGroup.get('first_name').value;
-    this.user.last_name = this.formGroup.get('last_name').value;
-    this.user.company_name = this.formGroup.get('company_name').value;
-    //this.user.language_id = this.formGroup.get('language_id').value;
+    // should be dropdown
     this.user.language_id = 1;
 
-    this.apiService.postUser(this.user).subscribe(res => {
-      this.closeDialog(true);
-    });
-    
-    this.uiService.toggleLoading();
+    try {
+      this.apiService.postUser(this.user).subscribe(res => {
+        if (res.status == "OK") {
+          this.uiService.toggleLoading();
+          this.uiService.showSuccess(res.message);
+          this.closeDialog(true);
+        } else {
+          this.uiService.toggleLoading();
+          this.uiService.showError(res.message);
+        }
+      });
+    } catch (error) {
+      this.uiService.toggleLoading();
+      this.uiService.showError(error);
+    }
   }
 
   logme(me) {

@@ -18,19 +18,19 @@ export class UiService {
     this.isLoading = !this.isLoading;
   }
 
-  public showSuccess() {
-    this.messageService.add({ severity: 'success', summary: '', detail: 'Message Content' });
+  public showSuccess(msg) {
+    this.messageService.add({ severity: 'success', summary: '', detail: msg });
   }
 
-  public showInfo() {
-    this.messageService.add({ severity: 'info', summary: '', detail: 'Message Content' });
+  public showInfo(msg) {
+    this.messageService.add({ severity: 'info', summary: '', detail: msg });
   }
 
-  public showWarn() {
-    this.messageService.add({ severity: 'warn', summary: '', detail: 'Message Content' });
+  public showWarn(msg) {
+    this.messageService.add({ severity: 'warn', summary: '', detail: msg });
   }
 
-  public showError() {
-    this.messageService.add({ severity: 'error', summary: '', detail: 'Message Content' });
+  public showError(msg) {
+    this.messageService.add({ severity: 'error', summary: '', detail: msg });
   }
 }

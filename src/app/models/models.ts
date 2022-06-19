@@ -1,6 +1,6 @@
 export interface APIResponse<T> {
     status: string;
-    msg: string;
+    message: string;
     data: T;
 }
 

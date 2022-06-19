@@ -73,6 +73,7 @@
     </form>
     <ng-template pTemplate="footer">
         <button class="btn btn-success" [disabled]="!formGroup.valid" (click)="saveChanges()"><i class="pi pi-check">{{ 'confirm_form' }}</i></button>
-        <button class="btn btn-danger" (click)="closeDialog(false)"><i class="pi pi-minus-circle">{{ 'reject_form' }}</i></button>
+        <button class="btn btn-warning" (click)="closeDialog(false)"><i class="pi pi-minus-circle">{{ 'reject_form' }}</i></button>
+        <button class="btn btn-danger" (click)="deleteUser()"><i class="pi pi-trash">{{ 'delete' }}</i></button>
     </ng-template>
 </p-dialog>

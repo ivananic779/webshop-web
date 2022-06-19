@@ -53,6 +53,11 @@ export class ApiService {
       .pipe(map(res => res));
   }
 
+  public deleteUser($id): Observable<ApiModels.APIResponse<[]>> {
+    return this.http.delete<ApiModels.APIResponse<[]>>(`${this.baseUrl}/users/${$id}`)
+      .pipe(map(res => res));
+  }
+
   public getLanguages(): Observable<ApiModels.APIResponse<ApiModels.Language[]>> {
     return this.http.get<ApiModels.APIResponse<ApiModels.Language[]>>(`${this.baseUrl}/languages`)
       .pipe(map(res => res));

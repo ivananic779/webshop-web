@@ -89,6 +89,27 @@ export class UserFormComponent implements OnInit {
         if (res.status == "OK") {
           this.uiService.toggleLoading();
           this.closeDialog(true);
+          this.uiService.showSuccess(res.message);
+        } else {
+          this.uiService.toggleLoading();
+          this.uiService.showError(res.message);
+        }
+      });
+    } catch (error) {
+      this.uiService.toggleLoading();
+      this.uiService.showError(error);
+    }
+  }
+
+  public deleteUser(): void {
+    this.uiService.toggleLoading();
+
+    try {
+      this.apiService.deleteUser(this.user.id).subscribe(res => {
+        if (res.status == "OK") {
+          this.uiService.toggleLoading();
+          this.closeDialog(true);
+          this.uiService.showSuccess(res.message);
         } else {
           this.uiService.toggleLoading();
           this.uiService.showError(res.message);

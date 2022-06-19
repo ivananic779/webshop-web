@@ -16,6 +16,10 @@ import { UserManagementComponent } from 'src/app/pages/user-management/user-mana
 import { TableModule } from 'primeng/table';
 import { ButtonModule } from 'primeng/button';
 import { InputTextModule } from 'primeng/inputtext';
+import { DialogModule } from 'primeng/dialog';
+import { ReactiveFormsModule } from '@angular/forms';
+
+import { UserFormComponent } from 'src/app/pages/user-management/user-form/user-form.component';
 
 @NgModule({
   imports: [
@@ -27,7 +31,9 @@ import { InputTextModule } from 'primeng/inputtext';
     ClipboardModule,
     TableModule,
     ButtonModule,
-    InputTextModule
+    InputTextModule,
+    DialogModule,
+    ReactiveFormsModule,
   ],
   declarations: [
     DashboardComponent,
@@ -35,6 +41,7 @@ import { InputTextModule } from 'primeng/inputtext';
     TablesComponent,
     IconsComponent,
     UserManagementComponent,
+    UserFormComponent,
   ]
 })
 

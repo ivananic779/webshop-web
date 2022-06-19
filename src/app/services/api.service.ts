@@ -3,7 +3,7 @@ import { HttpClient } from '@angular/common/http';
 import { Observable } from 'rxjs';
 import { map } from 'rxjs/operators';
 import { environment } from '../../environments/environment';
-import * as ApiModels from '../models/api-models';
+import * as ApiModels from '../models/models';
 
 
 @Injectable({
@@ -48,4 +48,8 @@ export class ApiService {
       .pipe(map(res => res));
   }
 
+  public postUser($user): Observable<ApiModels.APIResponse<[]>> {
+    return this.http.post<ApiModels.APIResponse<[]>>(`${this.baseUrl}/users`, $user)
+      .pipe(map(res => res));
+  }
 }

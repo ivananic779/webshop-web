@@ -1,0 +1,78 @@
+<p-dialog header="{{ 'user_form_header' }}" 
+    [(visible)]="display"
+    [closable]="false"
+    [modal]="true"
+    [breakpoints]="{'960px': '80vw'}" 
+    [style]="{width: '65vw'}"
+    [draggable]="false"
+    >
+    <form [formGroup]="formGroup">
+        <div class="grid p-fluid">
+            <button (click)="logme(user)">klik</button>
+            <div class="row">
+                <div class="col-12 md:col-6">
+                    <div class="p-inputgroup">
+                        <span class="p-inputgroup-addon"><i class="pi pi-user"></i></span>
+                        <input id="username" type="text" pInputText placeholder="{{ 'username' }}" formControlName="username">
+                    </div>
+                </div>
+                
+                <div class="col-12 md:col-6">
+                    <div class="p-inputgroup">
+                        <span class="p-inputgroup-addon"><i class="pi pi-send"></i></span>
+                        <input id="email" type="text" pInputText placeholder="{{ 'email' }}" formControlName="email">
+                    </div>
+                </div>
+            </div>
+            <div class="row">
+                <div class="col-12 md:col-6">
+                    <div class="p-inputgroup">
+                        <span class="p-inputgroup-addon"><i class="pi pi-key"></i></span>
+                        <input id="password" type="text" pInputText placeholder="{{ 'password' }}" formControlName="password">
+                    </div>
+                </div>
+                
+                <div class="col-12 md:col-6">
+                    <div class="p-inputgroup">
+                        <span class="p-inputgroup-addon"><i class="pi pi-key"></i></span>
+                        <input id="confirm_password" type="text" pInputText placeholder="{{ 'confirm_password' }}" formControlName="confirm_password">
+                    </div>
+                </div>
+            </div>
+            <div class="row">
+                <div class="col-12 md:col-6">
+                    <div class="p-inputgroup">
+                        <span class="p-inputgroup-addon"><i class="pi pi-id-card"></i></span>
+                        <input id="first_name" type="text" pInputText placeholder="{{ 'first_name' }}" formControlName="first_name">
+                    </div>
+                </div>
+                
+                <div class="col-12 md:col-6">
+                    <div class="p-inputgroup">
+                        <span class="p-inputgroup-addon"><i class="pi pi-id-card"></i></span>
+                        <input id="last_name" type="text" pInputText placeholder="{{ 'last_name' }}" formControlName="last_name">
+                    </div>
+                </div>
+            </div>
+            <div class="row">
+                <div class="col-12 md:col-6">
+                    <div class="p-inputgroup">
+                        <span class="p-inputgroup-addon"><i class="pi pi-building"></i></span>
+                        <input id="company_name" type="text" pInputText placeholder="{{ 'company_name' }}" formControlName="company_name">
+                    </div>
+                </div>
+                
+                <div class="col-12 md:col-6">
+                    <div class="p-inputgroup">
+                        <span class="p-inputgroup-addon"><i class="pi pi-flag"></i></span>
+                        <input id="language_id" type="text" pInputText placeholder="{{ 'language' }}" formControlName="language_id">
+                    </div>
+                </div>
+            </div>
+        </div>
+    </form>
+    <ng-template pTemplate="footer">
+        <button class="btn btn-success" [disabled]="!formGroup.valid" (click)="saveChanges()"><i class="pi pi-check">{{ 'confirm_form' }}</i></button>
+        <button class="btn btn-danger" (click)="closeDialog(false)"><i class="pi pi-minus-circle">{{ 'reject_form' }}</i></button>
+    </ng-template>
+</p-dialog>

@@ -12,8 +12,8 @@
             currentPageReportTemplate="Showing {first} to {last} of {totalRecords} entries" [filterDelay]="0"
             [globalFilterFields]="['id','username','first_name','last_name', 'company_name', 'email']">
             <ng-template pTemplate="caption">
-                <div class="table-header">
-                    List of Customers
+                <div class="table-header space-between">
+                    <button pButton type="button" class="p-button-primary" icon="pi pi-user-plus" (click)="toggleUserForm(false)"></button>
                     <span class="p-input-icon-left">
                         <i class="pi pi-search"></i>
                         <input pInputText type="text" (input)="dt.filterGlobal($event.target.value, 'contains')"
@@ -107,3 +107,5 @@
         </p-table>
     </div>
 </div>
+
+<app-user-form [display]="this.displayUserForm" (closeDialogEmitter)="toggleUserForm($event)"></app-user-form>

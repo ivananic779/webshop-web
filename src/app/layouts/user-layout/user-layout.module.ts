@@ -5,9 +5,12 @@ import { FormsModule } from '@angular/forms';
 
 import { ClipboardModule } from 'ngx-clipboard';
 
-import { AdminLayoutRoutes } from './admin-layout.routing';
+import { UserLayoutRoutes } from './user-layout.routing';
+import { DashboardComponent } from '../../pages/dashboard/dashboard.component';
+import { IconsComponent } from '../../pages/icons/icons.component';
+import { UserProfileComponent } from '../../pages/user-profile/user-profile.component';
+import { TablesComponent } from '../../pages/tables/tables.component';
 import { NgbModule } from '@ng-bootstrap/ng-bootstrap';
-import { UserManagementComponent } from 'src/app/pages/user-management/user-management.component';
 
 import { TableModule } from 'primeng/table';
 import { ButtonModule } from 'primeng/button';
@@ -15,13 +18,12 @@ import { InputTextModule } from 'primeng/inputtext';
 import { DialogModule } from 'primeng/dialog';
 import { ReactiveFormsModule } from '@angular/forms';
 
-import { UserFormComponent } from 'src/app/pages/user-management/user-form/user-form.component';
 import { DropdownModule } from 'primeng/dropdown';
 
 @NgModule({
   imports: [
     CommonModule,
-    RouterModule.forChild(AdminLayoutRoutes),
+    RouterModule.forChild(UserLayoutRoutes),
     FormsModule,
     HttpClientModule,
     NgbModule,
@@ -34,9 +36,11 @@ import { DropdownModule } from 'primeng/dropdown';
     DropdownModule,
   ],
   declarations: [
-    UserManagementComponent,
-    UserFormComponent,
+    DashboardComponent,
+    UserProfileComponent,
+    TablesComponent,
+    IconsComponent,
   ]
 })
 
-export class AdminLayoutModule { }
+export class UserLayoutModule { }

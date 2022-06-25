@@ -7,13 +7,15 @@ export class StorageService {
 
   constructor() { }
 
-  public setUserToken($username: string, $token: string, $remember_me: boolean): void {
+  public setUserToken($username: string, $token: string, $role_name: string, $remember_me: boolean): void {
     if ($remember_me) {
       localStorage.setItem('username', $username);
       localStorage.setItem('token', $token);
+      localStorage.setItem('role_name', $role_name);
     } else {
       sessionStorage.setItem('username', $username);
       sessionStorage.setItem('token', $token);
+      sessionStorage.setItem('role_name', $role_name);
     }
   }
 
@@ -29,7 +31,7 @@ export class StorageService {
     return token;
   }
 
-  public getUsername(): string {
+  public getUserUsername(): string {
     let username = null;
 
     if (username = localStorage.getItem('username')) {
@@ -39,6 +41,18 @@ export class StorageService {
     }
 
     return username;
+  }
+
+  public getUserRoleName(): string {
+    let role_name = null;
+
+    if (role_name = localStorage.getItem('role_name')) {
+      return role_name
+    } else {
+      role_name = sessionStorage.getItem('role_name');
+    }
+
+    return role_name;
   }
 
   public clear(): void {

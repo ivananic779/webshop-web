@@ -38,4 +38,5 @@ export interface Languages {
  */
 export interface Login {
     token: string;
+    role_name: string;
 }

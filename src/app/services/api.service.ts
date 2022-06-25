@@ -1,10 +1,10 @@
 import { Injectable } from '@angular/core';
-import { HttpClient } from '@angular/common/http';
+import { HttpClient, HttpHeaders } from '@angular/common/http';
 import { Observable } from 'rxjs';
 import { map } from 'rxjs/operators';
 import { environment } from '../../environments/environment';
 import * as ApiModels from '../models/api-models';
-
+import { StorageService } from './storage.service';
 
 @Injectable({
   providedIn: 'root'
@@ -12,10 +12,22 @@ import * as ApiModels from '../models/api-models';
 export class ApiService {
   private baseUrl = environment.apiUrl;
 
-  constructor(
-    private http: HttpClient
-  ) {
+  headers: HttpHeaders;
 
+  constructor(
+    private http: HttpClient,
+    private storageService: StorageService,
+  ) {
+  }
+
+  private getHeaders() {
+    this.headers = new HttpHeaders({
+      'Authorization': this.storageService.getUserToken()
+    });
+
+    return {
+      'headers': this.headers
+    }
   }
 
   /**
@@ -32,22 +44,22 @@ export class ApiService {
    */
 
   public getUsers(): Observable<ApiModels.APIResponse<ApiModels.Users>> {
-    return this.http.get<ApiModels.APIResponse<ApiModels.Users>>(`${this.baseUrl}/users`)
+    return this.http.get<ApiModels.APIResponse<ApiModels.Users>>(`${this.baseUrl}/users`, this.getHeaders())
       .pipe(map(res => res));
   }
 
   public postUser($user: ApiModels.User): Observable<ApiModels.APIResponse<[]>> {
-    return this.http.post<ApiModels.APIResponse<[]>>(`${this.baseUrl}/user`, $user)
+    return this.http.post<ApiModels.APIResponse<[]>>(`${this.baseUrl}/user`, $user, this.getHeaders())
       .pipe(map(res => res));
   }
 
   public deleteUser($id: number): Observable<ApiModels.APIResponse<[]>> {
-    return this.http.delete<ApiModels.APIResponse<[]>>(`${this.baseUrl}/user/${$id}`)
+    return this.http.delete<ApiModels.APIResponse<[]>>(`${this.baseUrl}/user/${$id}`, this.getHeaders())
       .pipe(map(res => res));
   }
 
   public getLanguages(): Observable<ApiModels.APIResponse<ApiModels.Language[]>> {
-    return this.http.get<ApiModels.APIResponse<ApiModels.Language[]>>(`${this.baseUrl}/languages`)
+    return this.http.get<ApiModels.APIResponse<ApiModels.Language[]>>(`${this.baseUrl}/languages`, this.getHeaders())
       .pipe(map(res => res));
   }
 }

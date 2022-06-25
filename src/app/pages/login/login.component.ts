@@ -34,7 +34,7 @@ export class LoginComponent implements OnInit {
     try {
       this.apiService.login(this.username, this.password).subscribe(res => {
         if (res.status == "OK") {
-          this.storageService.setUserToken(this.username, res.data.token, this.rememberMe);
+          this.storageService.setUserToken(this.username, res.data.token, res.data.role_name, this.rememberMe);
 
           this.uiService.toggleLoading();
 

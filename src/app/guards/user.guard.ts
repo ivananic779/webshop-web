@@ -17,7 +17,7 @@ export class UserGuard implements CanActivate {
     let token = null;
     let role_name = null;
 
-    if (!(token = this.storageService.getUserToken()) || !(role_name = this.storageService.getUserRoleName()) || role_name != 'User') {
+    if (!(token = this.storageService.getUserToken()) || !(role_name = this.storageService.getUserRoleName()) || (role_name != 'User' && role_name != 'Admin')) {
       return false;
     }
 

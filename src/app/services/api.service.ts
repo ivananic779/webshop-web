@@ -22,7 +22,7 @@ export class ApiService {
    * Auth, login, register...
    */
 
-  public login($username, $password): Observable<ApiModels.APIResponse<null>> {
+  public login($username: string, $password: string): Observable<ApiModels.APIResponse<null>> {
     return this.http.post<ApiModels.APIResponse<null>>(`${this.baseUrl}/login`, {username: $username, password: $password})
       .pipe(map(res => res));
   }
@@ -37,12 +37,12 @@ export class ApiService {
   }
 
   public postUser($user: ApiModels.User): Observable<ApiModels.APIResponse<[]>> {
-    return this.http.post<ApiModels.APIResponse<[]>>(`${this.baseUrl}/users`, $user)
+    return this.http.post<ApiModels.APIResponse<[]>>(`${this.baseUrl}/user`, $user)
       .pipe(map(res => res));
   }
 
   public deleteUser($id: number): Observable<ApiModels.APIResponse<[]>> {
-    return this.http.delete<ApiModels.APIResponse<[]>>(`${this.baseUrl}/users/${$id}`)
+    return this.http.delete<ApiModels.APIResponse<[]>>(`${this.baseUrl}/user/${$id}`)
       .pipe(map(res => res));
   }
 

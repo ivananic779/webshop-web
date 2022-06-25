@@ -38,7 +38,7 @@ export class LoginComponent implements OnInit {
 
           this.uiService.toggleLoading();
 
-          this.router.navigate(['/user-management']);
+          this.router.navigate(['/dashboard']);
         } else {
           this.uiService.toggleLoading();
           this.uiService.showError(res.message);

@@ -1,7 +1,8 @@
 import { Component, EventEmitter, Input, OnInit, Output } from '@angular/core';
 import { FormBuilder, Validators } from '@angular/forms';
 import { UiService } from 'src/app/components/ui/ui.service';
-import { Language, User } from 'src/app/models/models';
+import { Language } from 'src/app/models/language';
+import { User } from 'src/app/models/user';
 import { ApiService } from 'src/app/services/api.service';
 import { SelectItem } from 'primeng/api';
 

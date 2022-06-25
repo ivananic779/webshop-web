@@ -1,6 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { UiService } from 'src/app/components/ui/ui.service';
-import { User, Users } from 'src/app/models/models';
+import { Users } from 'src/app/models/api-models';
+import { User } from 'src/app/models/user';
 import { ApiService } from 'src/app/services/api.service';
 
 @Component({

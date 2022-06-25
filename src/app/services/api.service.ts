@@ -3,7 +3,7 @@ import { HttpClient } from '@angular/common/http';
 import { Observable } from 'rxjs';
 import { map } from 'rxjs/operators';
 import { environment } from '../../environments/environment';
-import * as ApiModels from '../models/models';
+import * as ApiModels from '../models/api-models';
 
 
 @Injectable({
@@ -18,42 +18,30 @@ export class ApiService {
 
   }
 
-  // get(path: string, params: any = {}): Observable<any> {
-  //   return this.http.get(`${this.baseUrl}${path}`, { params })
-  //     .pipe(map(res => res));
-  // }
+  /**
+   * Auth, login, register...
+   */
 
-  // post(path: string, body: any): Observable<any> {
-  //   return this.http.post(`${this.baseUrl}${path}`, body)
-  //     .pipe(map(res => res));
-  // }
+  public login($username, $password): Observable<ApiModels.APIResponse<null>> {
+    return this.http.post<ApiModels.APIResponse<null>>(`${this.baseUrl}/login`, {username: $username, password: $password})
+      .pipe(map(res => res));
+  }
 
-  // put(path: string, body: any): Observable<any> {
-  //   return this.http.put(`${this.baseUrl}${path}`, body)
-  //     .pipe(map(res => res));
-  // }
-
-  // delete(path: string): Observable<any> {
-  //   return this.http.delete(`${this.baseUrl}${path}`)
-  //     .pipe(map(res => res));
-  // }
-
-  // patch(path: string, body: any): Observable<any> {
-  //   return this.http.patch(`${this.baseUrl}${path}`, body)
-  //     .pipe(map(res => res));
-  // }
+  /**
+   * Users
+   */
 
   public getUsers(): Observable<ApiModels.APIResponse<ApiModels.Users>> {
     return this.http.get<ApiModels.APIResponse<ApiModels.Users>>(`${this.baseUrl}/users`)
       .pipe(map(res => res));
   }
 
-  public postUser($user): Observable<ApiModels.APIResponse<[]>> {
+  public postUser($user: ApiModels.User): Observable<ApiModels.APIResponse<[]>> {
     return this.http.post<ApiModels.APIResponse<[]>>(`${this.baseUrl}/users`, $user)
       .pipe(map(res => res));
   }
 
-  public deleteUser($id): Observable<ApiModels.APIResponse<[]>> {
+  public deleteUser($id: number): Observable<ApiModels.APIResponse<[]>> {
     return this.http.delete<ApiModels.APIResponse<[]>>(`${this.baseUrl}/users/${$id}`)
       .pipe(map(res => res));
   }

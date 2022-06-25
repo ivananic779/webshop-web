@@ -32,3 +32,10 @@ export interface Language {
 export interface Languages {
     languages: Language[];
 }
+
+/**
+ * LOGIN
+ */
+export interface Login {
+    token: string;
+}

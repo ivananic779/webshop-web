@@ -22,8 +22,8 @@ export class ApiService {
    * Auth, login, register...
    */
 
-  public login($username: string, $password: string): Observable<ApiModels.APIResponse<null>> {
-    return this.http.post<ApiModels.APIResponse<null>>(`${this.baseUrl}/login`, {username: $username, password: $password})
+  public login($username: string, $password: string): Observable<ApiModels.APIResponse<ApiModels.Login>> {
+    return this.http.post<ApiModels.APIResponse<ApiModels.Login>>(`${this.baseUrl}/login`, { username: $username, password: $password })
       .pipe(map(res => res));
   }
 

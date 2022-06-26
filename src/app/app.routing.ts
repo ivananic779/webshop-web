@@ -7,7 +7,7 @@ import { AdminLayoutComponent } from './layouts/admin-layout/admin-layout.compon
 import { AuthLayoutComponent } from './layouts/auth-layout/auth-layout.component';
 import { AdminGuard } from './guards/admin.guard';
 import { UserLayoutComponent } from './layouts/user-layout/user-layout.component';
-import { UserGuard } from './guards/user.guard';
+import { GuestGuard } from './guards/guest.guard';
 
 const routes: Routes = [
   {
@@ -33,7 +33,7 @@ const routes: Routes = [
         loadChildren: () => import('src/app/layouts/user-layout/user-layout.module').then(m => m.UserLayoutModule)
       }
     ],
-    canActivate: [UserGuard]
+    canActivate: [GuestGuard]
   }, {
     path: '',
     component: AuthLayoutComponent,

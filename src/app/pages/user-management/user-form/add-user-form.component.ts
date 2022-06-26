@@ -7,11 +7,11 @@ import { ApiService } from 'src/app/services/api.service';
 import { SelectItem } from 'primeng/api';
 
 @Component({
-  selector: 'app-user-form',
-  templateUrl: './user-form.component.html',
-  styleUrls: ['./user-form.component.scss']
+  selector: 'app-add-user-form',
+  templateUrl: './add-user-form.component.html',
+  styleUrls: ['./add-user-form.component.scss']
 })
-export class UserFormComponent implements OnInit {
+export class AddUserFormComponent implements OnInit {
   formGroup = this.formBuilder.group({
     username: [
       '',

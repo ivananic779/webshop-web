@@ -5,6 +5,7 @@ import { map } from 'rxjs/operators';
 import { environment } from '../../environments/environment';
 import * as ApiModels from '../models/api-models';
 import { StorageService } from './storage.service';
+import { Md5 } from 'ts-md5/dist/md5';
 
 @Injectable({
   providedIn: 'root'
@@ -45,18 +46,61 @@ export class ApiService {
 
   public getUsers(): Observable<ApiModels.APIResponse<ApiModels.User[]>> {
     return this.http.get<ApiModels.APIResponse<ApiModels.User[]>>(`${this.baseUrl}/users`, this.getHeaders())
-      .pipe(map(res => res));
+      .pipe(map((response: any) => {
+        const ret = Object.assign(new ApiModels.APIResponse<ApiModels.User[]>(), response);
+        ret.data = [];
+        response.data?.forEach((element: ApiModels.User) => {
+          ret.data.push(Object.assign(new ApiModels.User(), element));
+        });
+        return ret;
+      }));
   }
 
   public postUser($user: ApiModels.User): Observable<ApiModels.APIResponse<[]>> {
+    $user.password = Md5.hashStr($user.password);
+    $user.confirm_password = Md5.hashStr($user.confirm_password);
+
     return this.http.post<ApiModels.APIResponse<[]>>(`${this.baseUrl}/user`, $user, this.getHeaders())
-      .pipe(map(res => res));
+      .pipe(map((response: any) => {
+        const ret = Object.assign(new ApiModels.APIResponse<ApiModels.User>(), response);
+        ret.data = Object.assign(new ApiModels.User(), ret.data);
+        return ret;
+      }));
+  }
+
+  public editUser($user: ApiModels.User): Observable<ApiModels.APIResponse<[]>> {
+    return this.http.post<ApiModels.APIResponse<[]>>(`${this.baseUrl}/user`, $user, this.getHeaders())
+      .pipe(map((response: any) => {
+        const ret = Object.assign(new ApiModels.APIResponse<ApiModels.User>(), response);
+        ret.data = Object.assign(new ApiModels.User(), ret.data);
+        return ret;
+      }));
   }
 
   public deleteUser($id: number): Observable<ApiModels.APIResponse<[]>> {
     return this.http.delete<ApiModels.APIResponse<[]>>(`${this.baseUrl}/user/${$id}`, this.getHeaders())
-      .pipe(map(res => res));
+      .pipe(map((response: any) => {
+        const ret = Object.assign(new ApiModels.APIResponse<ApiModels.User>(), response);
+        ret.data = Object.assign(new ApiModels.User(), ret.data);
+        return ret;
+      }));
   }
+
+  public changeUserPassword($password, $confirm_password): Observable<ApiModels.APIResponse<[]>> {
+    $password = Md5.hashStr($password);
+    $confirm_password = Md5.hashStr($confirm_password);
+
+    return this.http.post<ApiModels.APIResponse<[]>>(`${this.baseUrl}/user`, { password: $password, confirm_password: $confirm_password }, this.getHeaders())
+      .pipe(map((response: any) => {
+        const ret = Object.assign(new ApiModels.APIResponse<ApiModels.User>(), response);
+        ret.data = Object.assign(new ApiModels.User(), ret.data);
+        return ret;
+      }));
+  }
+
+  /**
+   * Tranaslations
+   */
 
   public getLanguages(): Observable<ApiModels.APIResponse<ApiModels.Language[]>> {
     return this.http.get<ApiModels.APIResponse<ApiModels.Language[]>>(`${this.baseUrl}/languages`, this.getHeaders())

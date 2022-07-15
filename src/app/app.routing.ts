@@ -8,6 +8,7 @@ import { AuthLayoutComponent } from './layouts/auth-layout/auth-layout.component
 import { AdminGuard } from './guards/admin.guard';
 import { UserLayoutComponent } from './layouts/user-layout/user-layout.component';
 import { GuestGuard } from './guards/guest.guard';
+import { UserGuard } from './guards/user.guard';
 
 const routes: Routes = [
   {
@@ -33,7 +34,7 @@ const routes: Routes = [
         loadChildren: () => import('src/app/layouts/user-layout/user-layout.module').then(m => m.UserLayoutModule)
       }
     ],
-    canActivate: [GuestGuard]
+    canActivate: [UserGuard]
   }, {
     path: '',
     component: AuthLayoutComponent,
@@ -42,7 +43,8 @@ const routes: Routes = [
         path: '',
         loadChildren: () => import('src/app/layouts/auth-layout/auth-layout.module').then(m => m.AuthLayoutModule)
       }
-    ]
+    ],
+    canActivate: [GuestGuard]
   }, {
     path: '**',
     redirectTo: 'dashboard'

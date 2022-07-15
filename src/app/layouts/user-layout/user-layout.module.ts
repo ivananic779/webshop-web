@@ -5,7 +5,6 @@ import { CommonModule } from '@angular/common';
 import { ClipboardModule } from 'ngx-clipboard';
 
 import { UserLayoutRoutes } from './user-layout.routing';
-import { DashboardComponent } from '../../pages/dashboard/dashboard.component';
 import { NgbModule } from '@ng-bootstrap/ng-bootstrap';
 import { UserProfileComponent } from '../../pages/user-profile/user-profile.component';
 
@@ -35,7 +34,6 @@ import { CheckboxModule } from 'primeng/checkbox';
     CheckboxModule,
   ],
   declarations: [
-    DashboardComponent,
     UserProfileComponent,
   ]
 })

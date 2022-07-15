@@ -10,18 +10,18 @@ export class APIResponse<T> {
  * USER
  */
 export class User {
-    id: number;
-    username: string;
-    first_name?: string;
-    last_name?: string;
-    company_name?: string;
-    password?: string;
-    confirm_password?: string;
-    role_id: number;
-    role_name: string;
-    role_description?: string;
-    email: string;
-    language_id: number;
+    id: number = 0; 
+    username: string = "";
+    first_name?: string = "";
+    last_name?: string = "";
+    company_name?: string = "";
+    password?: string = "";
+    confirm_password?: string = "";
+    role_id: number = 0;
+    role_name: string = "";
+    role_description?: string = "";
+    email: string = "";
+    language_id: number = 1; // 1 is default language (ENU)
 }
 
 /**

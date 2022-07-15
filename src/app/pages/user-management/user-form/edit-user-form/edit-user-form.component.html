@@ -35,7 +35,7 @@
                         <label for="first_name" class="form-control-label">Ime:</label>
                         <div class="p-inputgroup">
                             <input id="first_name" type="text" pInputText
-                                [(ngModel)]="user.firstName" formControlName="firstName">
+                                [(ngModel)]="user.first_name" formControlName="firstName">
                         </div>
                     </div>
     
@@ -43,7 +43,7 @@
                         <label for="last_name" class="form-control-label">Prezime:</label>
                         <div class="p-inputgroup">
                             <input id="last_name" type="text" pInputText
-                                [(ngModel)]="user.lastName" formControlName="lastName">
+                                [(ngModel)]="user.last_name" formControlName="lastName">
                         </div>
                     </div>
     
@@ -55,23 +55,6 @@
                         </div>
                     </div>
                 </div>
-                <hr class="my-4" />
-                <h5 class="text-muted">SIGURNOST</h5>
-                <div class="row">
-                    <div class="col-12 md:col-6">
-                        <label for="typeId" class="form-control-label">Tip korisnika:</label>
-                        <div class="p-inputgroup">
-                            <p-dropdown 
-                                id="typeId" 
-                                appendTo="body"
-                                [options]="this.userTypes" 
-                                [(ngModel)]="user.role_id" 
-                                [autoDisplayFirst]="false" 
-                                formControlName="typeId">
-                            </p-dropdown>
-                        </div>
-                    </div>
-                </div>    
             </div>
         </form>
     </ng-template>
@@ -100,8 +83,8 @@
                 <div class="col-12 md:col-6">
                     <label for="password_change_confirm_pass" class="form-control-label">Potvrdi lozinku:</label>
                     <div class="p-inputgroup">
-                        <input id="password_change_confirm_pass" type="password" pInputText [(ngModel)]="confirmPassword"
-                            formControlName="confirm_password">
+                        <input id="password_change_confirm_pass" type="password" pInputText [(ngModel)]="confirm_password"
+                            formControlName="confirmPassword">
                     </div>
                 </div>
             </div>

@@ -2,8 +2,6 @@ import { Component, EventEmitter, Input, OnInit, Output } from '@angular/core';
 import { FormBuilder, FormControl, Validators } from '@angular/forms';
 import { UiService } from 'src/app/components/ui/ui.service';
 import { ApiService } from 'src/app/services/api.service';
-import { SelectItem } from 'primeng/api';
-import { USER_TYPES } from 'src/app/variables/user-types';
 import { User } from 'src/app/models/api-models';
 
 @Component({
@@ -29,9 +27,6 @@ export class AddUserFormComponent implements OnInit {
       Validators.required,
       Validators.minLength(8),
     ]),
-    typeId: new FormControl("", [
-      Validators.required,
-    ]),
     firstName: new FormControl("", []),
     lastName: new FormControl("", []),
     companyName: new FormControl("", []),
@@ -43,8 +38,6 @@ export class AddUserFormComponent implements OnInit {
 
   public user: User;
 
-  public userTypes: SelectItem[];
-
   constructor(
     private formBuilder: FormBuilder,
     private apiService: ApiService,
@@ -52,7 +45,6 @@ export class AddUserFormComponent implements OnInit {
   ) {
     this.display = false;
     this.user = new User();
-    this.userTypes = USER_TYPES;
   }
 
   ngOnInit(): void {
@@ -72,6 +64,7 @@ export class AddUserFormComponent implements OnInit {
     this.uiService.countRequestUp();
 
     try {
+      console.log(this.user);
       this.apiService.postUser(this.user).subscribe(res => {
         if (res.status == "OK") {
           this.uiService.countRequestDown();

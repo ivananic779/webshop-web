@@ -13,7 +13,7 @@ import { User } from 'src/app/models/api-models';
 })
 export class EditUserFormComponent implements OnInit {
 
-  formGroup = this.formBuilder.group({
+  public formGroup = this.formBuilder.group({
     username: new FormControl("", [
       Validators.required,
     ]),
@@ -21,15 +21,12 @@ export class EditUserFormComponent implements OnInit {
       Validators.required,
       Validators.email,
     ]),
-    typeId: new FormControl("", [
-      Validators.required,
-    ]),
     firstName: new FormControl("", []),
     lastName: new FormControl("", []),
     companyName: new FormControl("", []),
   });
 
-  formGroupPassword = this.formBuilder.group({
+  public formGroupPassword = this.formBuilder.group({
     password: new FormControl("", [
       Validators.required,
       Validators.minLength(8),
@@ -40,18 +37,18 @@ export class EditUserFormComponent implements OnInit {
     ]),
   });
 
-  @Input() display: boolean;
+  @Input() public display: boolean;
 
   public displayChangePassword: boolean;
 
-  @Input() user: User;
+  @Input() public user: User;
 
-  @Output() closeDialogEmitter = new EventEmitter<boolean>();
+  @Output() public closeDialogEmitter = new EventEmitter<boolean>();
 
   public userTypes: SelectItem[];
 
   public password: string;
-  public confirmPassword: string;
+  public confirm_password: string;
 
   constructor(
     private formBuilder: FormBuilder,
@@ -76,7 +73,7 @@ export class EditUserFormComponent implements OnInit {
   }
 
   public changePassword(): void {
-    if (this.password != this.confirmPassword) {
+    if (this.password != this.confirm_password) {
       this.uiService.showWarn("Lozinke se ne podudaraju.");
       return;
     }
@@ -84,8 +81,8 @@ export class EditUserFormComponent implements OnInit {
     this.uiService.countRequestUp();
 
     try {
-      this.apiService.changeUserPassword(this.user.id, this.password, this.confirmPassword).subscribe(res => {
-        if (res.message == "OK") {
+      this.apiService.changeUserPassword(this.user.id, this.password, this.confirm_password).subscribe(res => {
+        if (res.status == "OK") {
           this.uiService.countRequestDown();
           this.toggleChangePasswordDialog();
           this.uiService.showSuccess(res.message);
@@ -106,7 +103,7 @@ export class EditUserFormComponent implements OnInit {
 
     try {
       this.apiService.editUser(this.user).subscribe(res => {
-        if (res.message == "OK") {
+        if (res.status == "OK") {
           this.uiService.countRequestDown();
           this.closeDialog(true);
           this.uiService.showSuccess(res.message);

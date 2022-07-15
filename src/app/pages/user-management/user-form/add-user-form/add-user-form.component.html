@@ -54,21 +54,6 @@
             <h5 class="text-muted">SIGURNOST</h5>
             <div class="row">
                 <div class="col-12 md:col-6">
-                    <label for="typeId" class="form-control-label">Tip korisnika:</label>
-                    <div class="p-inputgroup">
-                        <p-dropdown 
-                            id="typeId" 
-                            appendTo="body"
-                            [options]="this.userTypes" 
-                            [(ngModel)]="user.role_id" 
-                            [autoDisplayFirst]="false" 
-                            formControlName="typeId">
-                        </p-dropdown>
-                    </div>
-                </div>
-            </div>
-            <div class="row">
-                <div class="col-12 md:col-6">
                     <label for="password" class="form-control-label">Lozinka:</label>
                     <div class="p-inputgroup">
                         <input id="password" type="password" pInputText

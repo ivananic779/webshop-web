@@ -13,7 +13,7 @@
             styleClass="p-datatable-customers" [rowHover]="true" [rows]="10" [showCurrentPageReport]="true"
             [rowsPerPageOptions]="[10,25,50]" [loading]="loading" responsiveLayout="scroll" [paginator]="true"
             currentPageReportTemplate="Prikaz {first} do {last} od {totalRecords} zapisa" [filterDelay]="0"
-            [globalFilterFields]="['username', 'first_name', 'last_name', 'email', 'company_name', 'role.name']">
+            [globalFilterFields]="['username', 'first_name', 'last_name', 'email', 'company_name', 'role_name']">
             <ng-template pTemplate="caption">
                 <div class="table-header space-between">
                     <div>
@@ -63,11 +63,11 @@
                             <p-columnFilter type="text" field="company_name" display="menu" class="ml-auto"></p-columnFilter>
                         </div>
                     </th>
-                    <th pSortableColumn="role.name">
+                    <th pSortableColumn="role_name">
                         <div class="flex justify-content-between align-items-center">
                             Tip uloge
-                            <p-sortIcon field="role.name"></p-sortIcon>
-                            <p-columnFilter type="text" field="role.name" display="menu" class="ml-auto"></p-columnFilter>
+                            <p-sortIcon field="role_name"></p-sortIcon>
+                            <p-columnFilter type="text" field="role_name" display="menu" class="ml-auto"></p-columnFilter>
                         </div>
                     </th>
                     <th></th>
@@ -98,7 +98,7 @@
                     </td>
                     <td>
                         <span class="p-column-title">Tip uloge</span>
-                        {{this.user.role.name}}
+                        {{this.user.role_name}}
                     </td>
                     <td class="text-center">
                         <button pButton type="button" class="p-button-secondary" icon="pi pi-cog" (click)="toggleEditUserForm(false, user)"></button>

@@ -18,16 +18,10 @@ export class User {
     password?: string;
     confirm_password?: string;
     role_id: number;
+    role_name: string;
+    role_description?: string;
     email: string;
     language_id: number;
-
-    role?: Role;
-}
-
-export class Role {
-    id: number;
-    name: string;
-    description: string;
 }
 
 /**

@@ -11,7 +11,7 @@ import { DialogModule } from 'primeng/dialog';
 import { DropdownModule } from 'primeng/dropdown';
 import { InputTextModule } from 'primeng/inputtext';
 import { TableModule } from 'primeng/table';
-import { AddUserFormComponent } from 'src/app/pages/user-management/user-form/add-user-form.component';
+import { AddUserFormComponent } from 'src/app/pages/user-management/user-form/add-user-form/add-user-form.component';
 import { EditUserFormComponent } from 'src/app/pages/user-management/user-form/edit-user-form/edit-user-form.component';
 import { UserManagementComponent } from 'src/app/pages/user-management/user-management.component';
 import { AdminLayoutRoutes } from './admin-layout.routing';

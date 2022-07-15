@@ -1,8 +1,8 @@
 import { Component, OnInit } from '@angular/core';
-import { ROUTES } from '../sidebar/sidebar.component';
 import { Location } from '@angular/common';
 import { StorageService } from 'src/app/services/storage.service';
 import { Router } from '@angular/router';
+import { HelperService } from 'src/app/services/helper.service';
 
 @Component({
   selector: 'app-navbar',
@@ -13,17 +13,21 @@ export class NavbarComponent implements OnInit {
   public focus;
   public listTitles: any[];
   public location: Location;
+  public username: string;
   constructor(
     location: Location,
     private storageService: StorageService,
     private router: Router,
+    private helperService: HelperService,
   ) {
     this.location = location;
   }
 
   ngOnInit() {
-    this.listTitles = ROUTES.filter(listTitle => listTitle);
+    this.listTitles = this.helperService.filterRoutesBasedOnUserType();
+    this.username = this.storageService.getUserUsername();
   }
+
   getTitle() {
     var titlee = this.location.prepareExternalUrl(this.location.path());
     if (titlee.charAt(0) === '#') {

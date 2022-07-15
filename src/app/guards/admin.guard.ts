@@ -17,7 +17,7 @@ export class AdminGuard implements CanActivate {
     let token = null;
     let role_name = null;
 
-    if (!(token = this.storageService.getUserToken()) || !(role_name = this.storageService.getUserRoleName()) || role_name != 'Admin') {
+    if (!(token = this.storageService.getUserToken()) || !(role_name = this.storageService.getUserType()) || role_name != 'Admin') {
       this.router.navigate(['login']);
       return false;
     }

@@ -1,11 +1,14 @@
 import { Injectable } from '@angular/core';
+import { Router } from '@angular/router';
 
 @Injectable({
   providedIn: 'root'
 })
 export class StorageService {
 
-  constructor() { }
+  constructor(
+    private router: Router,
+  ) { }
 
   public setUserToken($username: string, $token: string, $role_name: string, $remember_me: boolean): void {
     if ($remember_me) {
@@ -43,7 +46,7 @@ export class StorageService {
     return username;
   }
 
-  public getUserRoleName(): string {
+  public getUserType(): string {
     let role_name = null;
 
     if (role_name = localStorage.getItem('role_name')) {
@@ -58,5 +61,11 @@ export class StorageService {
   public clear(): void {
     localStorage.clear();
     sessionStorage.clear();
+  }
+
+  public logout(): void {
+    localStorage.clear();
+    sessionStorage.clear();
+    this.router.navigate(['/login']);
   }
 }

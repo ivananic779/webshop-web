@@ -60,18 +60,19 @@ export class AddUserFormComponent implements OnInit {
   }
 
   private getLanguages() {
-    this.uiService.toggleLoading();
+    this.uiService.countRequestUp();
     try {
       this.apiService.getLanguages().subscribe(res => {
         if (res.status == "OK") {
           this.languages = Language.makeSelectItem(res.data);
+          this.uiService.countRequestDown();
         } else {
-          this.uiService.toggleLoading();
+          this.uiService.countRequestDown();
           this.uiService.showError(res.message);
         }
       });
     } catch (error) {
-      this.uiService.toggleLoading();
+      this.uiService.countRequestDown();
       this.uiService.showError(error);
     }
   }
@@ -88,41 +89,41 @@ export class AddUserFormComponent implements OnInit {
       return;
     }
 
-    this.uiService.toggleLoading();
+    this.uiService.countRequestUp();
 
     try {
       this.apiService.postUser(this.user).subscribe(res => {
         if (res.status == "OK") {
-          this.uiService.toggleLoading();
+          this.uiService.countRequestDown();
           this.closeDialog(true);
           this.uiService.showSuccess(res.message);
         } else {
-          this.uiService.toggleLoading();
+          this.uiService.countRequestDown();
           this.uiService.showError(res.message);
         }
       });
     } catch (error) {
-      this.uiService.toggleLoading();
+      this.uiService.countRequestDown();
       this.uiService.showError(error);
     }
   }
 
   public deleteUser(): void {
-    this.uiService.toggleLoading();
+    this.uiService.countRequestUp();
 
     try {
       this.apiService.deleteUser(this.user.id).subscribe(res => {
         if (res.status == "OK") {
-          this.uiService.toggleLoading();
+          this.uiService.countRequestDown();
           this.closeDialog(true);
           this.uiService.showSuccess(res.message);
         } else {
-          this.uiService.toggleLoading();
+          this.uiService.countRequestDown();
           this.uiService.showError(res.message);
         }
       });
     } catch (error) {
-      this.uiService.toggleLoading();
+      this.uiService.countRequestDown();
       this.uiService.showError(error);
     }
   }

@@ -6,31 +6,35 @@ import { MessageService } from 'primeng/api';
 })
 export class UiService {
 
-  isLoading: boolean;
+  count: number;
 
   constructor(
     private messageService: MessageService,
   ) { 
-    this.isLoading = false;
+    this.count = 0;
   }
 
-  toggleLoading() {
-    this.isLoading = !this.isLoading;
+  public countRequestUp(): void {
+    this.count++;
   }
 
-  public showSuccess(msg) {
+  public countRequestDown(): void {
+    this.count--;
+  }
+
+  public showSuccess(msg: string): void {
     this.messageService.add({ severity: 'success', summary: '', detail: msg });
   }
 
-  public showInfo(msg) {
+  public showInfo(msg: string): void {
     this.messageService.add({ severity: 'info', summary: '', detail: msg });
   }
 
-  public showWarn(msg) {
+  public showWarn(msg: string): void {
     this.messageService.add({ severity: 'warn', summary: '', detail: msg });
   }
 
-  public showError(msg) {
+  public showError(msg: string): void {
     this.messageService.add({ severity: 'error', summary: '', detail: msg });
   }
 }

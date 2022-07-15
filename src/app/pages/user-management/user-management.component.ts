@@ -33,7 +33,7 @@ export class UserManagementComponent implements OnInit {
   }
 
   private getData(): void {
-    this.uiService.toggleLoading();
+    this.uiService.countRequestUp();
 
     this.users = null;
 
@@ -41,15 +41,15 @@ export class UserManagementComponent implements OnInit {
         this.apiService.getUsers().subscribe(res => {
           if (res.status == "OK") {
             this.users = res.data;
-            this.uiService.toggleLoading();
+            this.uiService.countRequestDown();
           } else {
-            this.uiService.toggleLoading();
+            this.uiService.countRequestDown();
             this.uiService.showError(res.message);
           }
       });
     } catch (error) {
       this.users = null;
-      this.uiService.toggleLoading();
+      this.uiService.countRequestDown();
       this.uiService.showError(error);
     }
   }

@@ -1,6 +1,5 @@
 import { Component, OnInit, OnDestroy } from '@angular/core';
 import { Router } from '@angular/router';
-import { environment } from 'src/environments/environment';
 
 @Component({
   selector: 'app-auth-layout',
@@ -8,8 +7,6 @@ import { environment } from 'src/environments/environment';
   styleUrls: ['./auth-layout.component.scss']
 })
 export class AuthLayoutComponent implements OnInit, OnDestroy {
-  public environmentName = environment.name;
-
   test: Date = new Date();
   public isCollapsed = true;
 

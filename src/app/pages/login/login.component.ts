@@ -1,4 +1,4 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, OnInit, OnDestroy } from '@angular/core';
 import { Router } from '@angular/router';
 import { UiService } from 'src/app/components/ui/ui.service';
 import { ApiService } from 'src/app/services/api.service';
@@ -9,16 +9,16 @@ import { StorageService } from 'src/app/services/storage.service';
   templateUrl: './login.component.html',
   styleUrls: ['./login.component.scss']
 })
-export class LoginComponent implements OnInit {
+export class LoginComponent implements OnInit, OnDestroy {
   public username: string;
   public password: string;
   public rememberMe: boolean;
 
   constructor(
-    private apiService: ApiService,
     private uiService: UiService,
-    private storageService: StorageService,
+    private apiService: ApiService,
     private router: Router,
+    private storageService: StorageService,
   ) {
     this.username = null;
     this.password = null;
@@ -26,6 +26,9 @@ export class LoginComponent implements OnInit {
   }
 
   ngOnInit() {
+  }
+
+  ngOnDestroy() {
   }
 
   public login() {

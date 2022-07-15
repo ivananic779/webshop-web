@@ -5,7 +5,7 @@ import { UiService } from './ui.service';
 @Component({
   selector: 'app-ui',
   templateUrl: './ui.component.html',
-  styleUrls: ['./ui.component.scss'],
+  styleUrls: ['./ui.component.scss']
 })
 export class UiComponent implements OnInit {
 
@@ -14,7 +14,7 @@ export class UiComponent implements OnInit {
     public confirmationService: ConfirmationService,
   ) {
     this.uiService.uiComponent = this;
-  }
+   }
 
   ngOnInit(): void {
   }

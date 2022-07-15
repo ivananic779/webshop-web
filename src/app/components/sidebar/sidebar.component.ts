@@ -15,9 +15,11 @@ export class SidebarComponent implements OnInit {
 
   constructor(
     private router: Router,
+    public storageService: StorageService,
     private helperService: HelperService,
-    private storageService: StorageService,
-  ) { }
+  ) {
+
+  }
 
   ngOnInit() {
     this.menuItems = this.helperService.filterRoutesBasedOnUserType();

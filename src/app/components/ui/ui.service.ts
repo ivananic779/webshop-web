@@ -7,7 +7,7 @@ import { UiComponent } from './ui.component';
 })
 export class UiService {
 
-  count: number;
+  public requestCount: number;
 
   // We are setting this in the uicomponent as uiService.uiComponent = this;
   public uiComponent: UiComponent;
@@ -15,15 +15,15 @@ export class UiService {
   constructor(
     private messageService: MessageService,
   ) { 
-    this.count = 0;
+    this.requestCount = 0;
   }
 
-  public countRequestUp(): void {
-    this.count++;
+  countRequestUp() {
+    this.requestCount++;
   }
 
-  public countRequestDown(): void {
-    this.count--;
+  countRequestDown() {
+    this.requestCount--;
   }
 
   public showSuccess(msg: string): void {

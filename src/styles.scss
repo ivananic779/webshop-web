@@ -1,4 +1,23 @@
 /* You can add global styles to this file, and also import other style files */
+
+/**
+ * Variables
+ */
+$custom-gradient: linear-gradient(87deg, #1f7fec 0, #03384d 100%) !important;
+
+/**
+ * Custom css
+ */
+.header-gradient-custom {
+    background: $custom-gradient;
+}
+
+// p-dialog header
+.p-dialog .p-dialog-header {
+    background: $custom-gradient;
+    color: white;
+}
+
 .col-12 {
     padding: 0.5rem;
 }
@@ -77,9 +96,81 @@
 }
 
 // Spacing between rows in p-table
-.p-datatable .p-datatable-tbody > tr > td {
+.p-datatable .p-datatable-tbody>tr>td {
     padding-left: 1rem;
-    padding-top: 0.1rem;
-    padding-bottom: 0.1rem;
+    padding-top: 0rem;
+    padding-bottom: 0rem;
     padding-right: 0rem;
+}
+
+p-table {
+    width: 100%;
+}
+
+.space-between {
+    justify-content: space-between;
+    display: flex;
+}
+
+.p-component {
+    font-size: 0.9rem;
+}
+
+/**
+ * Min width
+ */
+.min-width-3 {
+    min-width: 3rem;
+    white-space: nowrap;
+}
+
+.min-width-5 {
+    min-width: 5rem;
+    white-space: nowrap;
+}
+
+.min-width-7 {
+    min-width: 7rem;
+    white-space: nowrap;
+}
+
+.min-width-9 {
+    min-width: 9rem;
+    white-space: nowrap;
+}
+
+.min-width-11 {
+    min-width: 11rem;
+    white-space: nowrap;
+}
+
+.min-width-13 {
+    min-width: 13rem;
+    white-space: nowrap;
+}
+
+.min-width-15 {
+    min-width: 15rem;
+    white-space: nowrap;
+}
+
+.min-width-17 {
+    min-width: 17rem;
+    white-space: nowrap;
+}
+
+@media screen and (min-width: 768px) {
+    .display-none-big-screen {
+        display: none;
+    }
+
+    .no-left-margin {
+        margin-left: 0px !important;
+    }
+}
+
+@media screen and (max-width: 768px) {
+    .display-none-small-screen {
+        display: none;
+    }
 }

@@ -5,13 +5,13 @@ import { NavbarComponent } from './navbar/navbar.component';
 import { FooterComponent } from './footer/footer.component';
 import { RouterModule } from '@angular/router';
 import { NgbModule } from '@ng-bootstrap/ng-bootstrap';
-import { UiComponent } from './ui/ui.component';
 
 import { BlockUIModule } from 'primeng/blockui';
 import { ToastModule } from 'primeng/toast';
-import { MessageService } from 'primeng/api';
-import { ConfirmationService } from 'primeng/api';
+import { ConfirmationService, MessageService } from 'primeng/api';
 import { ConfirmDialogModule } from 'primeng/confirmdialog';
+
+import { UiComponent } from './ui/ui.component';
 
 @NgModule({
   imports: [
@@ -36,7 +36,7 @@ import { ConfirmDialogModule } from 'primeng/confirmdialog';
   ],
   providers: [
     MessageService,
-    ConfirmationService,  
+    ConfirmationService,
   ]
 })
 export class ComponentsModule { }

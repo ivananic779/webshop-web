@@ -1,5 +1,5 @@
-<p-blockUI [blocked]="uiService.count > 0" [autoZIndex]="true">
-    <img class="rotate " src="../../../assets/logo.jpg" alt="Loading WIH logo image"/>
+<p-blockUI [blocked]="uiService.requestCount != 0" baseZIndex="100000">
+    <img class="rotate " src="../../../assets/logo.svg" alt="Loading WIH logo image"/>
 </p-blockUI>
 
 <p-toast></p-toast>

@@ -1,8 +1,8 @@
 import { Component, OnInit } from '@angular/core';
 import { Location } from '@angular/common';
 import { StorageService } from 'src/app/services/storage.service';
-import { Router } from '@angular/router';
 import { HelperService } from 'src/app/services/helper.service';
+import { UiService } from '../ui/ui.service';
 
 @Component({
   selector: 'app-navbar',
@@ -13,14 +13,16 @@ export class NavbarComponent implements OnInit {
   public focus;
   public listTitles: any[];
   public location: Location;
+
   public username: string;
+
   constructor(
     location: Location,
-    private storageService: StorageService,
-    private router: Router,
+    public storageService: StorageService,
     private helperService: HelperService,
   ) {
     this.location = location;
+    this.username = null;
   }
 
   ngOnInit() {
@@ -28,7 +30,7 @@ export class NavbarComponent implements OnInit {
     this.username = this.storageService.getUserUsername();
   }
 
-  getTitle() {
+  public getTitle() {
     var titlee = this.location.prepareExternalUrl(this.location.path());
     if (titlee.charAt(0) === '#') {
       titlee = titlee.slice(1);
@@ -43,8 +45,7 @@ export class NavbarComponent implements OnInit {
   }
 
   logout() {
-    this.storageService.clear();
-    this.router.navigate(['/login']);
+    this.storageService.logout();
   }
 
 }

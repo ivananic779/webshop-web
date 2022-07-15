@@ -1,7 +1,6 @@
 import { NgModule } from '@angular/core';
 import { HttpClientModule } from '@angular/common/http'; import { RouterModule } from '@angular/router';
 import { CommonModule } from '@angular/common';
-import { FormsModule } from '@angular/forms';
 
 import { ClipboardModule } from 'ngx-clipboard';
 
@@ -13,10 +12,12 @@ import { TableModule } from 'primeng/table';
 import { ButtonModule } from 'primeng/button';
 import { InputTextModule } from 'primeng/inputtext';
 import { DialogModule } from 'primeng/dialog';
-import { ReactiveFormsModule } from '@angular/forms';
+import { ReactiveFormsModule, FormsModule } from '@angular/forms';
 
-import { AddUserFormComponent } from 'src/app/pages/user-management/user-form/add-user-form.component';
+import { AddUserFormComponent } from 'src/app/pages/user-management/user-form/add-user-form/add-user-form.component';
 import { DropdownModule } from 'primeng/dropdown';
+import { EditUserFormComponent } from 'src/app/pages/user-management/user-form/edit-user-form/edit-user-form.component';
+import { CheckboxModule } from 'primeng/checkbox';
 
 @NgModule({
   imports: [
@@ -32,10 +33,12 @@ import { DropdownModule } from 'primeng/dropdown';
     DialogModule,
     ReactiveFormsModule,
     DropdownModule,
+    CheckboxModule,
   ],
   declarations: [
     UserManagementComponent,
     AddUserFormComponent,
+    EditUserFormComponent,
   ]
 })
 

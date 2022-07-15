@@ -10,6 +10,8 @@ import { UiComponent } from './ui/ui.component';
 import { BlockUIModule } from 'primeng/blockui';
 import { ToastModule } from 'primeng/toast';
 import { MessageService } from 'primeng/api';
+import { ConfirmationService } from 'primeng/api';
+import { ConfirmDialogModule } from 'primeng/confirmdialog';
 
 @NgModule({
   imports: [
@@ -18,6 +20,7 @@ import { MessageService } from 'primeng/api';
     NgbModule,
     BlockUIModule,
     ToastModule,
+    ConfirmDialogModule,
   ],
   declarations: [
     FooterComponent,
@@ -31,6 +34,9 @@ import { MessageService } from 'primeng/api';
     SidebarComponent,
     UiComponent,
   ],
-  providers: [MessageService]
+  providers: [
+    MessageService,
+    ConfirmationService,  
+  ]
 })
 export class ComponentsModule { }

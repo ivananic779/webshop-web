@@ -13,6 +13,7 @@ import { NgbModule } from '@ng-bootstrap/ng-bootstrap';
 import { AppRoutingModule } from './app.routing';
 import { ComponentsModule } from './components/components.module';
 import { UserLayoutComponent } from './layouts/user-layout/user-layout.component';
+import { DatePipe, DecimalPipe } from '@angular/common';
 
 
 @NgModule({
@@ -31,7 +32,10 @@ import { UserLayoutComponent } from './layouts/user-layout/user-layout.component
     AuthLayoutComponent,
     UserLayoutComponent,
   ],
-  providers: [],
+  providers: [
+    DatePipe, 
+    DecimalPipe,
+  ],
   bootstrap: [AppComponent]
 })
 export class AppModule { }

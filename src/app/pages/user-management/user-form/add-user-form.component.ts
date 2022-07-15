@@ -1,5 +1,5 @@
 import { Component, EventEmitter, Input, OnInit, Output } from '@angular/core';
-import { FormBuilder, Validators } from '@angular/forms';
+import { FormBuilder, FormControl, Validators } from '@angular/forms';
 import { UiService } from 'src/app/components/ui/ui.service';
 import { Language } from 'src/app/models/language';
 import { User } from 'src/app/models/user';
@@ -12,31 +12,30 @@ import { SelectItem } from 'primeng/api';
   styleUrls: ['./add-user-form.component.scss']
 })
 export class AddUserFormComponent implements OnInit {
-  formGroup = this.formBuilder.group({
-    username: [
-      '',
-      Validators.required,
-    ],
-    email: [
-      '',
-      Validators.required,
-    ],
-    password: [
-      '',
-      Validators.required,
-    ],
-    confirm_password: [
-      '',
-      Validators.required,
-    ],
-    first_name: [''],
-    last_name: [''],
-    company_name: [''],
-    language_id: [
-      '',
-      Validators.required
-    ],
-  });
+  formGroup = this.formBuilder.group(
+    {
+      username: new FormControl("", [
+        Validators.required,
+      ]),
+      email: new FormControl("", [
+        Validators.required,
+      ]),
+      password: new FormControl("", [
+        Validators.required,
+        Validators.minLength(8),
+      ]),
+      confirm_password: new FormControl("", [
+        Validators.required,
+        Validators.minLength(8),
+      ]),
+      first_name: [''],
+      last_name: [''],
+      company_name: [''],
+      language_id: new FormControl("", [
+        Validators.required
+      ]),
+    },
+  );
 
   @Input() display: boolean;
 
@@ -83,6 +82,12 @@ export class AddUserFormComponent implements OnInit {
   }
 
   public saveChanges(): void {
+    // Validator password matches
+    if (this.user.password != this.user.confirm_password) {
+      this.uiService.showWarn('lbl_passwords_must_match');
+      return;
+    }
+
     this.uiService.toggleLoading();
 
     try {

@@ -20,7 +20,7 @@
                 <div class="col-12 md:col-6">
                     <div class="p-inputgroup">
                         <span class="p-inputgroup-addon"><i class="pi pi-send"></i></span>
-                        <input id="email" type="text" pInputText placeholder="{{ 'email' }}" [(ngModel)]="user.email" formControlName="email">
+                        <input id="email" type="text" pInputText placeholder="{{ 'email' }}" [(ngModel)]="user.email" [email]="true" formControlName="email">
                     </div>
                 </div>
             </div>
@@ -28,14 +28,14 @@
                 <div class="col-12 md:col-6">
                     <div class="p-inputgroup">
                         <span class="p-inputgroup-addon"><i class="pi pi-key"></i></span>
-                        <input id="password" type="text" pInputText placeholder="{{ 'password' }}" [(ngModel)]="user.password" formControlName="password">
+                        <input id="password" type="password" pInputText placeholder="{{ 'password' }}" [(ngModel)]="user.password" formControlName="password">
                     </div>
                 </div>
                 
                 <div class="col-12 md:col-6">
                     <div class="p-inputgroup">
                         <span class="p-inputgroup-addon"><i class="pi pi-key"></i></span>
-                        <input id="confirm_password" type="text" pInputText placeholder="{{ 'confirm_password' }}" [(ngModel)]="user.confirm_password" formControlName="confirm_password">
+                        <input id="confirm_password" type="password" pInputText placeholder="{{ 'confirm_password' }}" [(ngModel)]="user.confirm_password" formControlName="confirm_password">
                     </div>
                 </div>
             </div>

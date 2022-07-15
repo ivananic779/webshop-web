@@ -5,7 +5,6 @@ import { UiService } from './ui.service';
   selector: 'app-ui',
   templateUrl: './ui.component.html',
   styleUrls: ['./ui.component.scss'],
-  providers: [UiService]
 })
 export class UiComponent implements OnInit {
 

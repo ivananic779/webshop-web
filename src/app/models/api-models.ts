@@ -17,8 +17,17 @@ export class User {
     company_name?: string;
     password?: string;
     confirm_password?: string;
+    role_id: number;
     email: string;
     language_id: number;
+
+    role?: Role;
+}
+
+export class Role {
+    id: number;
+    name: string;
+    description: string;
 }
 
 /**

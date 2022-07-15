@@ -1,4 +1,7 @@
-<div class="header bg-gradient-info pt-6">
+<app-add-user-form *ngIf="this.displayAddUserForm" [display]="this.displayAddUserForm" (closeDialogEmitter)="toggleAddUserForm($event)"></app-add-user-form>
+<app-edit-user-form *ngIf="this.displayEditUserForm" [display]="this.displayEditUserForm" [user]="this.selectedUser" (closeDialogEmitter)="toggleEditUserForm($event)"></app-edit-user-form>
+
+<div class="header header-gradient-custom pt-6">
     <div class="container-fluid">
         <div class="header-body">
         </div>
@@ -9,53 +12,27 @@
         <p-table #dt [value]="users" dataKey="id"
             styleClass="p-datatable-customers" [rowHover]="true" [rows]="10" [showCurrentPageReport]="true"
             [rowsPerPageOptions]="[10,25,50]" [loading]="loading" responsiveLayout="scroll" [paginator]="true"
-            currentPageReportTemplate="Showing {first} to {last} of {totalRecords} entries" [filterDelay]="0"
-            [globalFilterFields]="['id','username','first_name','last_name', 'company_name', 'email']">
+            currentPageReportTemplate="Prikaz {first} do {last} od {totalRecords} zapisa" [filterDelay]="0"
+            [globalFilterFields]="['username', 'first_name', 'last_name', 'email', 'company_name', 'role.name']">
             <ng-template pTemplate="caption">
                 <div class="table-header space-between">
-                    <button pButton type="button" class="p-button-primary" icon="pi pi-user-plus" (click)="toggleUserForm(false)"></button>
+                    <div>
+                        <button pButton type="button" class="p-button-primary" icon="pi pi-user-plus" (click)="toggleAddUserForm(false)"></button>&nbsp;
+                        <button pButton label="" class="p-button-outlined" icon="pi pi-filter-slash" (click)="clearFilters(dt)"></button>
+                    </div>
                     <span class="p-input-icon-left">
                         <i class="pi pi-search"></i>
-                        <input pInputText type="text" (input)="dt.filterGlobal($event.target.value, 'contains')"
-                            placeholder="Global Search" />
+                        <input pInputText type="text" [(ngModel)]="this.globalFilter" (input)="dt.filterGlobal($event.target.value, 'contains')" placeholder="Tražilica"/>
                     </span>
                 </div>
             </ng-template>
             <ng-template pTemplate="header">
                 <tr>
-                    <th pSortableColumn="id">
-                        <div class="flex justify-content-between align-items-center">
-                            ID
-                            <p-sortIcon field="id"></p-sortIcon>
-                            <p-columnFilter type="text" field="id" display="menu" class="ml-auto"></p-columnFilter>
-                        </div>
-                    </th>
                     <th pSortableColumn="username">
                         <div class="flex justify-content-between align-items-center">
-                            Username
+                            Korisničko ime
                             <p-sortIcon field="username"></p-sortIcon>
                             <p-columnFilter type="text" field="username" display="menu" class="ml-auto"></p-columnFilter>
-                        </div>
-                    </th>
-                    <th pSortableColumn="first_name">
-                        <div class="flex justify-content-between align-items-center">
-                            First Name
-                            <p-sortIcon field="first_name"></p-sortIcon>
-                            <p-columnFilter type="text" field="first_name" display="menu" class="ml-auto"></p-columnFilter>
-                        </div>
-                    </th>
-                    <th pSortableColumn="last_name">
-                        <div class="flex justify-content-between align-items-center">
-                            Last Name
-                            <p-sortIcon field="last_name"></p-sortIcon>
-                            <p-columnFilter type="text" field="last_name" display="menu" class="ml-auto"></p-columnFilter>
-                        </div>
-                    </th>
-                    <th pSortableColumn="company_name">
-                        <div class="flex justify-content-between align-items-center">
-                            Company Name
-                            <p-sortIcon field="company_name"></p-sortIcon>
-                            <p-columnFilter type="text" field="company_name" display="menu" class="ml-auto"></p-columnFilter>
                         </div>
                     </th>
                     <th pSortableColumn="email">
@@ -65,18 +42,47 @@
                             <p-columnFilter type="text" field="email" display="menu" class="ml-auto"></p-columnFilter>
                         </div>
                     </th>
-                    <th style="width: 8rem"></th>
+                    <th pSortableColumn="first_name">
+                        <div class="flex justify-content-between align-items-center">
+                            Ime
+                            <p-sortIcon field="first_name"></p-sortIcon>
+                            <p-columnFilter type="text" field="first_name" display="menu" class="ml-auto"></p-columnFilter>
+                        </div>
+                    </th>
+                    <th pSortableColumn="last_name">
+                        <div class="flex justify-content-between align-items-center">
+                            Prezime
+                            <p-sortIcon field="last_name"></p-sortIcon>
+                            <p-columnFilter type="text" field="last_name" display="menu" class="ml-auto"></p-columnFilter>
+                        </div>
+                    </th>
+                    <th pSortableColumn="company_name">
+                        <div class="flex justify-content-between align-items-center">
+                            Poduzeće
+                            <p-sortIcon field="company_name"></p-sortIcon>
+                            <p-columnFilter type="text" field="company_name" display="menu" class="ml-auto"></p-columnFilter>
+                        </div>
+                    </th>
+                    <th pSortableColumn="role.name">
+                        <div class="flex justify-content-between align-items-center">
+                            Tip uloge
+                            <p-sortIcon field="role.name"></p-sortIcon>
+                            <p-columnFilter type="text" field="role.name" display="menu" class="ml-auto"></p-columnFilter>
+                        </div>
+                    </th>
+                    <th></th>
+                    <th></th>
                 </tr>
             </ng-template>
             <ng-template pTemplate="body" let-user>
                 <tr>
                     <td>
-                        <span class="p-column-title">ID</span>
-                        {{user.id}}
-                    </td>
-                    <td>
                         <span class="p-column-title">Username</span>
                         {{user.username}}
+                    </td>
+                    <td>
+                        <span class="p-column-title">E-mail</span>
+                        {{user.email}}
                     </td>
                     <td>
                         <span class="p-column-title">First Name</span>
@@ -87,25 +93,26 @@
                         {{user.last_name}}
                     </td>
                     <td>
-                        <span class="p-column-title">Company Name</span>                        
-                        {{user.company_name}}
+                        <span class="p-column-title">Poduzeće</span>
+                        {{this.user.company_name}}
                     </td>
                     <td>
-                        <span class="p-column-title">E-mail</span>
-                        {{user.email}}
+                        <span class="p-column-title">Tip uloge</span>
+                        {{this.user.role.name}}
                     </td>
-                    <td style="text-align: center">
-                        <button pButton type="button" class="p-button-secondary" icon="pi pi-cog" (click)="toggleUserForm(false, user)"></button>
+                    <td class="text-center">
+                        <button pButton type="button" class="p-button-secondary" icon="pi pi-cog" (click)="toggleEditUserForm(false, user)"></button>
+                    </td>
+                    <td class="text-center">
+                        <button pButton type="button" class="p-button-danger" icon="pi pi-trash" (click)="toggleDeleteUserDialog(user)"></button>
                     </td>
                 </tr>
             </ng-template>
             <ng-template pTemplate="emptymessage">
                 <tr>
-                    <td colspan="8">No users found.</td>
+                    <td colspan="8">Korisnici nisu pronađeni.</td>
                 </tr>
             </ng-template>
         </p-table>
     </div>
 </div>
-
-<app-add-user-form [display]="this.displayUserForm" [user]="this.selectedUser" (closeDialogEmitter)="toggleUserForm($event)"></app-add-user-form>

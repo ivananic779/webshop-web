@@ -86,11 +86,11 @@ export class ApiService {
       }));
   }
 
-  public changeUserPassword($password, $confirm_password): Observable<ApiModels.APIResponse<[]>> {
+  public changeUserPassword($user_id: number, $password: string, $confirm_password: string): Observable<ApiModels.APIResponse<[]>> {
     $password = Md5.hashStr($password);
     $confirm_password = Md5.hashStr($confirm_password);
 
-    return this.http.post<ApiModels.APIResponse<[]>>(`${this.baseUrl}/user`, { password: $password, confirm_password: $confirm_password }, this.getHeaders())
+    return this.http.post<ApiModels.APIResponse<[]>>(`${this.baseUrl}/user`, { user_id: $user_id, password: $password, confirm_password: $confirm_password }, this.getHeaders())
       .pipe(map((response: any) => {
         const ret = Object.assign(new ApiModels.APIResponse<ApiModels.User>(), response);
         ret.data = Object.assign(new ApiModels.User(), ret.data);

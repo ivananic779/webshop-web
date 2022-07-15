@@ -1,4 +1,6 @@
-export interface APIResponse<T> {
+import { SelectItem } from "primeng/api";
+
+export class APIResponse<T> {
     status: string;
     message: string;
     data: T;
@@ -7,36 +9,43 @@ export interface APIResponse<T> {
 /**
  * USER
  */
-export interface User {
+export class User {
     id: number;
     username: string;
     first_name?: string;
     last_name?: string;
     company_name?: string;
+    password?: string;
+    confirm_password?: string;
     email: string;
     language_id: number;
-}
-
-export interface Users {
-    users: User[];
 }
 
 /**
  * LANGUAGE
  */
-export interface Language {
+export class Language {
     id: number;
     name: string;
-}
 
-export interface Languages {
-    languages: Language[];
+    public static makeSelectItem(languages: Language[]): SelectItem[] {
+        const result: SelectItem[] = [];
+
+        languages.forEach(language => {
+            result.push({
+                label: language.name,
+                value: language.id,
+            });
+        });
+
+        return result;
+    }
 }
 
 /**
  * LOGIN
  */
-export interface Login {
+export class Login {
     token: string;
     role_name: string;
 }

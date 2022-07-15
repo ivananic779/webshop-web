@@ -43,8 +43,8 @@ export class ApiService {
    * Users
    */
 
-  public getUsers(): Observable<ApiModels.APIResponse<ApiModels.Users>> {
-    return this.http.get<ApiModels.APIResponse<ApiModels.Users>>(`${this.baseUrl}/users`, this.getHeaders())
+  public getUsers(): Observable<ApiModels.APIResponse<ApiModels.User[]>> {
+    return this.http.get<ApiModels.APIResponse<ApiModels.User[]>>(`${this.baseUrl}/users`, this.getHeaders())
       .pipe(map(res => res));
   }
 

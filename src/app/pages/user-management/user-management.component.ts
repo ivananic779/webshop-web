@@ -1,7 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { UiService } from 'src/app/components/ui/ui.service';
-import { Users } from 'src/app/models/api-models';
-import { User } from 'src/app/models/user';
+import { User } from 'src/app/models/api-models';
 import { ApiService } from 'src/app/services/api.service';
 
 @Component({
@@ -12,7 +11,7 @@ import { ApiService } from 'src/app/services/api.service';
 export class UserManagementComponent implements OnInit {
   public displayUserForm: boolean;
   
-  public users: Users;
+  public users: User[];
   public selectedUser: User;
 
   public loading: boolean;
@@ -23,7 +22,7 @@ export class UserManagementComponent implements OnInit {
     private uiService: UiService,
   ) {
     this.displayUserForm = false;
-    this.users = null;
+    this.users = [];
     this.selectedUser = new User();
     this.loading = false;
   }
@@ -35,7 +34,7 @@ export class UserManagementComponent implements OnInit {
   private getData(): void {
     this.uiService.countRequestUp();
 
-    this.users = null;
+    this.users = [];
 
     try {
         this.apiService.getUsers().subscribe(res => {
@@ -48,7 +47,7 @@ export class UserManagementComponent implements OnInit {
           }
       });
     } catch (error) {
-      this.users = null;
+      this.users = [];
       this.uiService.countRequestDown();
       this.uiService.showError(error);
     }

@@ -46,7 +46,11 @@ export class LoginComponent implements OnInit, OnDestroy {
 
           this.uiService.countRequestDown();
 
-          this.router.navigate(['/dashboard']);
+          if (res.data.role_name == "Admin") {
+            this.router.navigate(['/user-management']);
+          } else {
+            this.router.navigate(['/dashboard']);
+          }
         } else {
           this.uiService.countRequestDown();
           this.uiService.showError(res.message);

@@ -9,6 +9,7 @@ import { AdminGuard } from './guards/admin.guard';
 import { UserLayoutComponent } from './layouts/user-layout/user-layout.component';
 import { GuestGuard } from './guards/guest.guard';
 import { UserGuard } from './guards/user.guard';
+import { WebshopLayoutComponent } from './layouts/webshop-layout/webshop-layout.component';
 
 const routes: Routes = [
   {
@@ -42,6 +43,16 @@ const routes: Routes = [
       {
         path: '',
         loadChildren: () => import('src/app/layouts/auth-layout/auth-layout.module').then(m => m.AuthLayoutModule)
+      }
+    ],
+    canActivate: [GuestGuard]
+  }, {
+    path: '',
+    component: WebshopLayoutComponent,
+    children: [
+      {
+        path: '',
+        loadChildren: () => import('src/app/layouts/webshop-layout/webshop-layout.module').then(m => m.WebshopLayoutModule)
       }
     ],
     canActivate: [GuestGuard]

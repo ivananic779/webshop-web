@@ -3,7 +3,7 @@
 /**
  * Variables
  */
-$custom-gradient: linear-gradient(87deg, #1f7fec 0, #03384d 100%) !important;
+$custom-gradient: linear-gradient(87deg, #18171B  0, #103B61 100%) !important;
 
 /**
  * Custom css
@@ -172,5 +172,15 @@ p-table {
 @media screen and (max-width: 768px) {
     .display-none-small-screen {
         display: none;
+    }
+}
+
+.navbar-header-logo {
+    margin-left: 30px;
+}
+
+@media screen and (max-width: 768px) {
+    .navbar-header-logo {
+        display: none !important;
     }
 }

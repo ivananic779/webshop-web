@@ -1,11 +1,16 @@
 <div class="main-content">
   <nav class="navbar navbar-top navbar-horizontal navbar-expand-md navbar-dark header-gradient-custom">
+    <div class="navbar-header-logo">
+      <a routerLinkActive="active" [routerLink]="['/dashboard']">
+        <img style="max-height: 50px;" src="../../../assets/logo192x192.png">
+      </a>
+    </div>
     <div class="container px-4">
       <button class="navbar-toggler" type="button" (click)="isCollapsed=!isCollapsed"
         aria-controls="sidenav-collapse-main">
         <span class="navbar-toggler-icon"></span>
       </button>
-      <div class="collapse navbar-collapse" [ngbCollapse]="isCollapsed" id="sidenav-collapse-main">
+      <div class="collapse navbar-collapse" style="flex: none !important;" [ngbCollapse]="isCollapsed" id="sidenav-collapse-main">
         <!-- Collapse header -->
         <div class="navbar-collapse-header d-md-none">
           <div class="row">
@@ -17,16 +22,41 @@
             </div>
           </div>
           <div class="row">
-            <div class="col-12 collapse-brand header-gradient-custom">
+            <div class="col-12">
+              <div class="text-center text-muted mb-4">
+                <h3>
+                  <a routerLinkActive="active" [routerLink]="['/dashboard']">
+                    {{'WEALTH IS HEALTH'}}
+                  </a>
+                </h3>
+              </div>
             </div>
           </div>
         </div>
         <!-- Navbar items -->
-        <ul class="navbar-nav ml-auto">
+        <ul class="navbar-nav ml-auto justify-content-center">
           <li class="nav-item">
             <a class="nav-link nav-link-icon" routerLinkActive="active" [routerLink]="['/dashboard']">
               <i class="ni ni-planet"></i>
-              <span class="nav-link-inner--text">{{ 'Početna stranica' }}</span>
+              <span class="nav-link-inner--text">{{ 'Početna' }}</span>
+            </a>
+          </li>
+          <li class="nav-item">
+            <a class="nav-link nav-link-icon" routerLinkActive="active" [routerLink]="['/dashboard']">
+              <i class="ni ni-planet"></i>
+              <span class="nav-link-inner--text">{{ 'Proizvodi' }}</span>
+            </a>
+          </li>
+          <li class="nav-item">
+            <a class="nav-link nav-link-icon" routerLinkActive="active" [routerLink]="['/dashboard']">
+              <i class="ni ni-planet"></i>
+              <span class="nav-link-inner--text">{{ 'O nama' }}</span>
+            </a>
+          </li>
+          <li class="nav-item">
+            <a class="nav-link nav-link-icon" routerLinkActive="active" [routerLink]="['/dashboard']">
+              <i class="ni ni-planet"></i>
+              <span class="nav-link-inner--text">{{ 'Kontakt' }}</span>
             </a>
           </li>
         </ul>

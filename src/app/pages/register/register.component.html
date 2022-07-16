@@ -12,14 +12,16 @@
       <div class="card bg-secondary shadow border-0">
         <div class="card-body px-lg-5 py-lg-5">
           <div class="text-center text-muted mb-4">
-            <small>{{ 'lbl_register_header' }}</small>
+            <a routerLinkActive="active" [routerLink]="['/dashboard']">
+              LOGO
+            </a>
           </div>
           <div class="form-group">
             <div class="input-group input-group-alternative mb-3">
               <div class="input-group-prepend">
                 <span class="input-group-text"><i class="ni ni-hat-3"></i></span>
               </div>
-              <input class="form-control" [(ngModel)]="this.username" placeholder="Username" type="text">
+              <input class="form-control" [(ngModel)]="this.username" placeholder="Korisničko ime" type="text">
             </div>
           </div>
           <div class="form-group">
@@ -27,7 +29,7 @@
               <div class="input-group-prepend">
                 <span class="input-group-text"><i class="ni ni-email-83"></i></span>
               </div>
-              <input class="form-control" [(ngModel)]="this.email" placeholder="Email" type="email">
+              <input class="form-control" [(ngModel)]="this.email" placeholder="E-mail" type="email">
             </div>
           </div>
           <div class="form-group">
@@ -35,7 +37,7 @@
               <div class="input-group-prepend">
                 <span class="input-group-text"><i class="ni ni-lock-circle-open"></i></span>
               </div>
-              <input class="form-control" [(ngModel)]="this.password" placeholder="Password" type="password">
+              <input class="form-control" [(ngModel)]="this.password" placeholder="Lozinka" type="password">
             </div>
           </div>
           <div class="form-group">
@@ -43,7 +45,7 @@
               <div class="input-group-prepend">
                 <span class="input-group-text"><i class="ni ni-lock-circle-open"></i></span>
               </div>
-              <input class="form-control" [(ngModel)]="this.confirm_password" placeholder="Confirm password"
+              <input class="form-control" [(ngModel)]="this.confirm_password" placeholder="Potvrdi lozinku"
                 type="password">
             </div>
           </div>
@@ -52,22 +54,22 @@
               <div class="custom-control custom-control-alternative custom-checkbox">
                 <input class="custom-control-input" id="customCheckRegister" type="checkbox">
                 <label class="custom-control-label" for="customCheckRegister">
-                  <span class="text-muted">I agree with the <a href="#!">Privacy Policy</a></span>
+                  <span class="text-muted">Slažem se sa <a href="#!">Politikom Privatnosti</a></span>
                 </label>
               </div>
             </div>
           </div>
           <div class="text-center">
-            <button type="button" class="btn btn-primary mt-4">Create account</button>
+            <button type="button" class="btn btn-primary mt-4">Kreiraj račun</button>
           </div>
         </div>
       </div>
       <div class="row mt-3">
         <div class="col-6">
-          <a [routerLink]="['/forgot-password']" class="text-light"><small>Forgot password?</small></a>
+          <a [routerLink]="['/forgot-password']" class="text-light"><small>Zaboravljena lozinka?</small></a>
         </div>
         <div class="col-6 text-right">
-          <a [routerLink]="['/login']" class="text-light"><small>Login</small></a>
+          <a [routerLink]="['/login']" class="text-light"><small>Prijava</small></a>
         </div>
       </div>
     </div>

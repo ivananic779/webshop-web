@@ -5,13 +5,16 @@
   </div>
 </div>
 <!-- Page content -->
+<br>
 <div class="container-fluid mt-3">
   <div class="row justify-content-center">
     <div class="col-lg-5 col-md-7">
       <div class="card bg-secondary shadow border-0">
         <div class="card-body px-lg-5 py-lg-5">
           <div class="text-center text-muted mb-4">
-            <small>Prijava</small>
+            <a routerLinkActive="active" [routerLink]="['/dashboard']">
+              LOGO
+            </a>
           </div>
           <div class="form-group mb-3">
             <div class="input-group input-group-alternative">
@@ -42,10 +45,10 @@
       </div>
       <div class="row mt-3">
         <div class="col-6">
-          <a [routerLink]="['/forgot-password']" class="text-light"><small>Forgot password?</small></a>
+          <a [routerLink]="['/forgot-password']" class="text-light"><small>Zaboravljena lozinka?</small></a>
         </div>
         <div class="col-6 text-right">
-          <a [routerLink]="['/register']" class="text-light"><small>Create new account</small></a>
+          <a [routerLink]="['/register']" class="text-light"><small>Registracija</small></a>
         </div>
       </div>
     </div>

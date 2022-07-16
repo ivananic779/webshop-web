@@ -31,7 +31,12 @@ export class LoginComponent implements OnInit, OnDestroy {
   ngOnDestroy() {
   }
 
-  public login() {
+  public login(): void {
+    if (!this.username || !this.password) {
+      this.uiService.showWarn("Upišite korisničko ime i lozinku.");
+      return;
+    }
+
     this.uiService.countRequestUp();
 
     try {

@@ -1,7 +1,7 @@
 <app-add-user-form *ngIf="this.displayAddUserForm" [display]="this.displayAddUserForm" (closeDialogEmitter)="toggleAddUserForm($event)"></app-add-user-form>
 <app-edit-user-form *ngIf="this.displayEditUserForm" [display]="this.displayEditUserForm" [user]="this.selectedUser" (closeDialogEmitter)="toggleEditUserForm($event)"></app-edit-user-form>
 
-<div class="header header-gradient-custom pt-6">
+<div class="header header-gradient-custom pt-6 hide-on-small-screen">
     <div class="container-fluid">
         <div class="header-body">
         </div>

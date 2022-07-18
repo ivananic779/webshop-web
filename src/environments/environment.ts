@@ -4,7 +4,7 @@
 
 export const environment = {
   production: false,
-  name: "WIH",
+  name: "WIH.HR",
   apiUrl: 'http://localhost:4202/api',
 };
 
